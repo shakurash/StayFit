@@ -186,13 +186,13 @@ extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfItemsPerRow:CGFloat = 7
-        let spacingBetweenCells:CGFloat = 16
+        let spacingBetweenCells:CGFloat = 20
         
         let totalSpacing = (2 * self.spacing) + ((numberOfItemsPerRow - 1) * spacingBetweenCells) //Amount of total spacing in a row
         
         if let collection = self.calendarView{
             let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
-            return CGSize(width: width, height: width)
+            return CGSize(width: width, height: width / 2)
         }else{
             return CGSize(width: 0, height: 0)
         }
