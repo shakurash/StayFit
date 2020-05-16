@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -15,9 +16,11 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var displayCalendarCurrentMonth: UILabel!
     @IBOutlet weak var cpmInfoLabel: UILabel!
     @IBOutlet weak var targetInfoLabel: UILabel!
+    @IBOutlet weak var calendarContentView: UIView!
     
+    let realm = try! Realm()
     var dataSource = DataSource()
-    
+    var myArray = Array<DataMark>()
     var currentMonth = String()
     private let spacing:CGFloat = 16.0
     
@@ -27,6 +30,7 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationItem.hidesBackButton = true
         calendarView.delegate = self
         calendarView.dataSource = self
+        calendarView.backgroundColor = .systemGray6
         
         currentMonth = dataSource.months[month]
         displayCalendarCurrentMonth.text = "\(currentMonth) \(year)"
@@ -39,16 +43,19 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         
         cpmInfoLabel.text = String("\(dataSource.CPM) Kcal")
         targetInfoLabel.text = String("\(dataSource.predictionTime) Dni")
+        
     }
-    
     
     // MARK: - Table view data source
     
     override func viewWillAppear(_ animated: Bool) {
+        if let loadProfileData = realm.objects(ProfileModel.self).first {
+            loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
+        }
         getStartPosition()
         currentYearIsLeapYear()
+        myArray = dataSource.profileTargetDay()
     }
-    
     
     //MARK: - Calendar setup
     
@@ -89,10 +96,17 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
             }
         }
         
+        for item in myArray {
+            if year == item.year && month + 1 == item.month && cell.dateLabel.text == String(item.day) {
+                    cell.backgroundColor = UIColor.lightGray
+            }
+        }
+    
         //select the current day of time and space :)
         if currentMonth == dataSource.months[calendar.component(.month, from: date) - 1] && year == calendar.component(.year, from: date) && indexPath.row + 1 - dataSource.numberOfEmptySpace == day {
             cell.backgroundColor = UIColor.green
         }
+        
         return cell
     }
     
@@ -185,6 +199,7 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
 extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
         let numberOfItemsPerRow:CGFloat = 7
         let spacingBetweenCells:CGFloat = 20
         

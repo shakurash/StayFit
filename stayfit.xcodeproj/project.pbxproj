@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		85F1373F4C252BE6353DCCFC /* Pods_stayfit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCD861466318EB9D9E12A68 /* Pods_stayfit.framework */; };
+		E142DEA1246C1073004D0CD1 /* DataMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = E142DEA0246C1073004D0CD1 /* DataMark.swift */; };
+		E142DEA3246C266F004D0CD1 /* CalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E142DEA2246C266F004D0CD1 /* CalendarViewCell.swift */; };
+		E142DEA5246C4F54004D0CD1 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E142DEA4246C4F54004D0CD1 /* CheckBox.swift */; };
 		E143CCD124656C2C009AD0FE /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143CCD024656C2C009AD0FE /* ProfileModel.swift */; };
 		E143CCD324656E00009AD0FE /* CustomDishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143CCD224656E00009AD0FE /* CustomDishModel.swift */; };
 		E143CCD52465702A009AD0FE /* IngridientsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143CCD42465702A009AD0FE /* IngridientsModel.swift */; };
 		E143CCD7246594D8009AD0FE /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143CCD6246594D8009AD0FE /* DataSource.swift */; };
+		E1440560246D44000070D4C7 /* UpdateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144055F246D44000070D4C7 /* UpdateMethods.swift */; };
 		E152F22C246438C30003E48C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F22B246438C30003E48C /* AppDelegate.swift */; };
 		E152F22E246438C30003E48C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F22D246438C30003E48C /* SceneDelegate.swift */; };
 		E152F230246438C30003E48C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F22F246438C30003E48C /* ViewController.swift */; };
@@ -25,17 +29,20 @@
 		E152F24924643CE20003E48C /* CopyDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F24824643CE20003E48C /* CopyDishViewController.swift */; };
 		E152F24B24643D0A0003E48C /* IngridientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F24A24643D0A0003E48C /* IngridientsViewController.swift */; };
 		E1D86FDC2467EBD70080BBCE /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D86FDB2467EBD70080BBCE /* Calendar.swift */; };
-		E1D86FDE2467EFD90080BBCE /* CalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D86FDD2467EFD90080BBCE /* CalendarViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D93FC8BC845400976E85859 /* Pods-stayfit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stayfit.release.xcconfig"; path = "Target Support Files/Pods-stayfit/Pods-stayfit.release.xcconfig"; sourceTree = "<group>"; };
 		66C722C2F82D9D173751E486 /* Pods-stayfit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stayfit.debug.xcconfig"; path = "Target Support Files/Pods-stayfit/Pods-stayfit.debug.xcconfig"; sourceTree = "<group>"; };
 		7FCD861466318EB9D9E12A68 /* Pods_stayfit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_stayfit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E142DEA0246C1073004D0CD1 /* DataMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMark.swift; sourceTree = "<group>"; };
+		E142DEA2246C266F004D0CD1 /* CalendarViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCell.swift; sourceTree = "<group>"; };
+		E142DEA4246C4F54004D0CD1 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		E143CCD024656C2C009AD0FE /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		E143CCD224656E00009AD0FE /* CustomDishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDishModel.swift; sourceTree = "<group>"; };
 		E143CCD42465702A009AD0FE /* IngridientsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientsModel.swift; sourceTree = "<group>"; };
 		E143CCD6246594D8009AD0FE /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		E144055F246D44000070D4C7 /* UpdateMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMethods.swift; sourceTree = "<group>"; };
 		E152F228246438C30003E48C /* stayfit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stayfit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E152F22B246438C30003E48C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E152F22D246438C30003E48C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +58,6 @@
 		E152F24824643CE20003E48C /* CopyDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDishViewController.swift; sourceTree = "<group>"; };
 		E152F24A24643D0A0003E48C /* IngridientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientsViewController.swift; sourceTree = "<group>"; };
 		E1D86FDB2467EBD70080BBCE /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
-		E1D86FDD2467EFD90080BBCE /* CalendarViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +135,10 @@
 				E143CCD42465702A009AD0FE /* IngridientsModel.swift */,
 				E143CCD6246594D8009AD0FE /* DataSource.swift */,
 				E1D86FDB2467EBD70080BBCE /* Calendar.swift */,
-				E1D86FDD2467EFD90080BBCE /* CalendarViewCell.swift */,
+				E142DEA0246C1073004D0CD1 /* DataMark.swift */,
+				E142DEA2246C266F004D0CD1 /* CalendarViewCell.swift */,
+				E142DEA4246C4F54004D0CD1 /* CheckBox.swift */,
+				E144055F246D44000070D4C7 /* UpdateMethods.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,18 +269,21 @@
 			files = (
 				E152F24524643BF60003E48C /* DishEditViewController.swift in Sources */,
 				E152F24924643CE20003E48C /* CopyDishViewController.swift in Sources */,
+				E142DEA3246C266F004D0CD1 /* CalendarViewCell.swift in Sources */,
 				E152F24324643BA30003E48C /* BodyEditViewController.swift in Sources */,
 				E143CCD7246594D8009AD0FE /* DataSource.swift in Sources */,
 				E152F24724643CAF0003E48C /* DishSetupViewController.swift in Sources */,
 				E152F230246438C30003E48C /* ViewController.swift in Sources */,
+				E1440560246D44000070D4C7 /* UpdateMethods.swift in Sources */,
 				E143CCD124656C2C009AD0FE /* ProfileModel.swift in Sources */,
 				E152F24B24643D0A0003E48C /* IngridientsViewController.swift in Sources */,
 				E152F22C246438C30003E48C /* AppDelegate.swift in Sources */,
-				E1D86FDE2467EFD90080BBCE /* CalendarViewCell.swift in Sources */,
+				E142DEA5246C4F54004D0CD1 /* CheckBox.swift in Sources */,
 				E152F22E246438C30003E48C /* SceneDelegate.swift in Sources */,
 				E152F24124643B4C0003E48C /* MainMenuViewController.swift in Sources */,
 				E143CCD52465702A009AD0FE /* IngridientsModel.swift in Sources */,
 				E143CCD324656E00009AD0FE /* CustomDishModel.swift in Sources */,
+				E142DEA1246C1073004D0CD1 /* DataMark.swift in Sources */,
 				E1D86FDC2467EBD70080BBCE /* Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

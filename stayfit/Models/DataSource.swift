@@ -6,7 +6,8 @@ struct DataSource {
     let profileModel = ProfileModel()
     let realm = try! Realm()
     
-    // profile segmented controller ranges
+    //MARK: - profile setup
+    
     let profileMass: [Int] = Array(30...300)
     let profileHeight: [Int] = Array(100...300)
     
@@ -86,14 +87,31 @@ struct DataSource {
         let realTimeInt = realisticTimeToGetTarget.rounded(.up)
         return abs(timeToGetTarget - Int(realTimeInt))
     }
-    // masa - cel = roznica
-    // ilosc dni idealna/prognozowana to roznica * 7 (kaloryka dniowa na tydzien zeby przytyc/stracic 1kg) = czas do uzyskania celu
-    // CPM * czas do uzyskania  celu = sumaryczna kaloryka zeby byc ciagle taki sam
-    // CPM +/- 10/15/20% * czas do uzyskania celu = sumaryczna kaloryka zeby przytyc/schudnac
-    // sum kaloryka - zeby przytyc/chudnac = roznica kaloryczna
-    // roznica kaloryczna / CPM = rzeczywisty szacowany czas do uzyskania celu
     
-    // calendar setup
+    func profileTargetDay() -> Array<DataMark> {
+        guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile savepoint to make target data")}
+        var arrayOfDatesToTargetDay: Array<DataMark> = []
+        let startingProfileDate = loadProfileData.startDate
+        var daysToTarget = predictionTime
+        var dateComponent = DateComponents()
+        let dateFormatter = DateFormatter()
+        var dayCounter = 0
+        while daysToTarget > 0 {
+            dayCounter += 1
+            dateComponent.day = dayCounter
+            let analizedDate = calendar.date(byAdding: dateComponent, to: startingProfileDate!)
+            let year = dateFormatter.calendar.component(.year, from: analizedDate!)
+            let month = dateFormatter.calendar.component(.month, from: analizedDate!)
+            let day = dateFormatter.calendar.component(.day, from: analizedDate!)
+            let object = DataMark(year: year, month: month, day: day)
+            arrayOfDatesToTargetDay.append(object)
+            daysToTarget -= 1
+        }
+        return arrayOfDatesToTargetDay
+    }
+    
+    //MARK: - calendar setup
+    
     let months = ["Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień"]
     let weekDays = [ "Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"]
     var numberInMonths = [31,28,31,30,31,30,31,31,30,31,30,31]
@@ -103,4 +121,39 @@ struct DataSource {
     var numberOfEmptySpace = 0 //empty spaces at beginning of calendar
     var numberOfNextEmptySpace = 0
     var numberOfPreviousEmpySpace = 0
+
+
+    //MARK: - view controller refresh functions
+
+    func refreshDishLabels(steppers: [Any]) -> [Any] {
+    guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data refresh dish labels and steppers")}
+        let obj = loadProfileData
+        var item = String()
+        var counter = 0
+        var steppersArray: [Any] = []
+        for time in steppers {
+            switch counter {
+            case 0: item = obj.timeOfprzystawka
+            case 1: item = obj.timeOfsniadanie
+            case 2: item = obj.timeOfdrugieSniadanie
+            case 3: item = obj.timeOfdeser
+            case 4: item = obj.timeOfobiad
+            case 5: item = obj.timeOflunch
+            case 6: item = obj.timeOfdrugiObiad
+            case 7: item = obj.timeOfprzekaska
+            case 8: item = obj.timeOfkolacja
+            default: break
+            }
+            if let whatType = time as? UIStepper {
+                let justInt = item.dropLast(3)
+                whatType.value = Double(Int(justInt)!)
+                steppersArray.append(whatType)
+            } else if time is UILabel {
+                (time as! UILabel).text = item
+                steppersArray.append(time)
+            }
+            counter += 1
+        }
+    return steppersArray
+}
 }

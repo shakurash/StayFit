@@ -7,76 +7,119 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DishSetupViewController: UIViewController {
+    
+    @IBOutlet weak var alarmCheck: UISwitch!
+    @IBOutlet weak var przystawkaCheckBox: CheckBox!
+    @IBOutlet weak var sniadanieCheckBox: CheckBox!
+    @IBOutlet weak var drugieSniadanieCheckBox: CheckBox!
+    @IBOutlet weak var deserCheckBox: CheckBox!
+    @IBOutlet weak var obiadCheckBox: CheckBox!
+    @IBOutlet weak var lunchCheckBox: CheckBox!
+    @IBOutlet weak var drugieDanieCheckBox: CheckBox!
+    @IBOutlet weak var przekaskaCheckBox: CheckBox!
+    @IBOutlet weak var kolacjaCheckBox: CheckBox!
 
+    @IBOutlet var timerDisplayLabel: [UILabel]!
+    @IBOutlet var stepperValues: [UIStepper]!
+    
+    let updateMethods = UpdateMethods()
+    let realm = try! Realm()
+    let dataSource = DataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if let obj = realm.objects(ProfileModel.self).first {
+            przystawkaCheckBox.isChecked = obj.przystawka
+            sniadanieCheckBox.isChecked = obj.sniadanie
+            drugieSniadanieCheckBox.isChecked = obj.drugieSniadanie
+            deserCheckBox.isChecked = obj.deser
+            obiadCheckBox.isChecked = obj.obiad
+            lunchCheckBox.isChecked = obj.lunch
+            drugieDanieCheckBox.isChecked = obj.drugiObiad
+            przekaskaCheckBox.isChecked = obj.przekaska
+            kolacjaCheckBox.isChecked = obj.kolacja
+            alarmCheck.isOn = obj.setAlarm
+            
+            updateView(with: dataSource.refreshDishLabels(steppers: stepperValues))
+            updateView(with: dataSource.refreshDishLabels(steppers: timerDisplayLabel))
+        }
     }
-
-    // MARK: - Table view data source
-
-
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let loadProfileData = realm.objects(ProfileModel.self).first {
+            loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
+        }
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func updateView(with: [Any]) {
+        let timeArray = with
+        if timeArray is [UIStepper] {
+            for oldValue in stepperValues {
+                oldValue.value = (timeArray[Int(oldValue.tag)] as! UIStepper).value
+            }
+        } else if timeArray is [UILabel] {
+            for oldValue in timerDisplayLabel {
+                oldValue.text = (timeArray[oldValue.tag] as! UILabel).text
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    @IBAction func dinnerCheckButton(_ sender: CheckBox) {
+        let button = sender.currentTitle
+        var index = sender.isChecked
+        var id = String()
+        switch button {
+        case "przystawka":
+            index = !index
+            id = "0"
+        case "sniadanie":
+            index = !index
+            id = "1"
+        case "drugie sniadanie":
+            index = !index
+            id = "2"
+        case "deser":
+            index = !index
+            id = "3"
+        case "obiad":
+            index = !index
+            id = "4"
+        case "lunch":
+            index = !index
+            id = "5"
+        case "drugie danie":
+            index = !index
+            id = "6"
+        case "przekaska":
+            index = !index
+            id = "7"
+        case "kolacja":
+            index = !index
+            id = "8"
+        default: fatalError("no button was found")
+        }
+        updateMethods.saveData(dataToSave: index, id: id)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    @IBAction func alarmCheck(_ sender: UISwitch) {
+        let status = sender.isOn
+        updateMethods.saveData(dataToSave: status, id: "setAlarm")
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    @IBAction func stepperPressed(_ sender: UIStepper) {
+        if let label = timerDisplayLabel {
+            label[sender.tag].text = String(Int(sender.value)) + ":00"
+            if let timeSaved = label[sender.tag].text{
+            updateMethods.saveData(dataToSave: timeSaved, id: "\(sender.tag)")
+            }
+        }
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
+    
 }

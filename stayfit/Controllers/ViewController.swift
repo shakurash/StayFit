@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         
     }
     
-    
     @IBAction func createProfilePressed(_ sender: UIButton) {
         do {
             try realm.write {
@@ -32,8 +31,12 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
         if (realm.objects(ProfileModel.self).first != nil) {
-            performSegue(withIdentifier: "FromStartToMainMenu", sender: self)
+              let myProfile = realm.objects(ProfileModel.self).first
+            if myProfile?.date != nil && myProfile?.startDate != nil {
+                performSegue(withIdentifier: "FromStartToMainMenu", sender: self)
+            }
         }
     }
 }
