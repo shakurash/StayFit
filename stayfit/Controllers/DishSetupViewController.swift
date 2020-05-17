@@ -69,40 +69,21 @@ class DishSetupViewController: UIViewController {
     }
     
     @IBAction func dinnerCheckButton(_ sender: CheckBox) {
-        let button = sender.currentTitle
+        let button = sender.tag
         var index = sender.isChecked
-        var id = String()
         switch button {
-        case "przystawka":
-            index = !index
-            id = "0"
-        case "sniadanie":
-            index = !index
-            id = "1"
-        case "drugie sniadanie":
-            index = !index
-            id = "2"
-        case "deser":
-            index = !index
-            id = "3"
-        case "obiad":
-            index = !index
-            id = "4"
-        case "lunch":
-            index = !index
-            id = "5"
-        case "drugie danie":
-            index = !index
-            id = "6"
-        case "przekaska":
-            index = !index
-            id = "7"
-        case "kolacja":
-            index = !index
-            id = "8"
+        case 0: index = !index
+        case 1: index = !index
+        case 2: index = !index
+        case 3: index = !index
+        case 4: index = !index
+        case 5: index = !index
+        case 6: index = !index
+        case 7: index = !index
+        case 8: index = !index
         default: fatalError("no button was found")
         }
-        updateMethods.saveData(dataToSave: index, id: id)
+        updateMethods.saveData(dataToSave: index, id: String(button))
     }
     
     @IBAction func alarmCheck(_ sender: UISwitch) {

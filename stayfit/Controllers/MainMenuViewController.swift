@@ -27,6 +27,11 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        resetCalendar() //need to reset few functions because when used navigation back -> OK but custom segue -> calendar crash
+        getStartPosition()
+        currentYearIsLeapYear()
+        myArray = dataSource.profileTargetDay()
+        
         navigationItem.hidesBackButton = true
         calendarView.delegate = self
         calendarView.dataSource = self
@@ -43,7 +48,6 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         
         cpmInfoLabel.text = String("\(dataSource.CPM) Kcal")
         targetInfoLabel.text = String("\(dataSource.predictionTime) Dni")
-        
     }
     
     // MARK: - Table view data source
@@ -52,9 +56,7 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
         }
-        getStartPosition()
-        currentYearIsLeapYear()
-        myArray = dataSource.profileTargetDay()
+        
     }
     
     //MARK: - Calendar setup
@@ -90,11 +92,11 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
             if Int(securedText)! < 1 {
                 cell.isHidden = true
             }
+        }
             switch indexPath.row {
             case 5,6,12,13,19,20,26,27,33,34: cell.dateLabel.textColor = UIColor.gray
             default: break
             }
-        }
         
         for item in myArray {
             if year == item.year && month + 1 == item.month && cell.dateLabel.text == String(item.day) {
@@ -110,16 +112,28 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         return cell
     }
     
+    func setupWeek() {
+        if dataSource.numberOfEmptySpace == 0 {
+            dataSource.numberOfEmptySpace = 7
+        }
+    }
+    
+    func resetCalendar() {
+            month = calendar.component(.month, from: date) - 1
+            year = calendar.component(.year, from: date)
+            currentMonth = dataSource.months[month]
+            displayCalendarCurrentMonth.text = "\(currentMonth) \(year)"
+    }
+    
     func getStartPosition() {
         if dataSource.direction == 0 {
             dataSource.numberOfEmptySpace = week
+            setupWeek()
             var dayCounter = day
             while dayCounter > 0 {
                 dataSource.numberOfEmptySpace -= 1
                 dayCounter -= 1
-                if dataSource.numberOfEmptySpace == 0 {
-                    dataSource.numberOfEmptySpace = 7
-                }
+                setupWeek()
             }
                 if dataSource.numberOfEmptySpace == 7 {
                     dataSource.numberOfEmptySpace = 0

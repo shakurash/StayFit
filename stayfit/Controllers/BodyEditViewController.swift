@@ -32,6 +32,7 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     let updateMethods = UpdateMethods()
     let realm = try! Realm()
     var myProfile: ProfileModel?
+    var vcID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +82,6 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewWillAppear(_ animated: Bool) {
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
-            
             profileNameTextLabel.text = loadProfileData.name
             profileMassTextLabel.text = String(loadProfileData.mass)
             profileTargetTextLabel.text = String(loadProfileData.target)

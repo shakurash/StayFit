@@ -29,6 +29,7 @@ struct UpdateMethods {
                 case "6": myProfile?.timeOfdrugiObiad = myData
                 case "7": myProfile?.timeOfprzekaska = myData
                 case "8": myProfile?.timeOfkolacja = myData
+                //case "measureData": stworz array dat z waga
                 default: break
                 }
             } else if let myData = dataToSave as? Int {
@@ -59,8 +60,7 @@ struct UpdateMethods {
                 case "6": myProfile?.drugiObiad = myData
                 case "7": myProfile?.przekaska = myData
                 case "8": myProfile?.kolacja = myData
-                default: break
-                    
+                default: break                    
                 }
             }
         }

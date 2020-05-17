@@ -19,6 +19,8 @@ class ViewController: UIViewController {
         
     }
     
+    
+    
     @IBAction func createProfilePressed(_ sender: UIButton) {
         do {
             try realm.write {
@@ -40,4 +42,5 @@ class ViewController: UIViewController {
         }
     }
 }
+
 

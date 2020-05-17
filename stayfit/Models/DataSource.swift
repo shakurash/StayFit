@@ -60,6 +60,14 @@ struct DataSource {
         return PPM * loadProfileData.dayIntense
     }
     
+//    var predictionTimeAsDateFormat: Date {
+//        guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data calculate end Date()")}
+//        let myDate = predictionTime
+//        var dateComponent = DateComponents()
+//        dateComponent.day = myDate
+//        return calendar.date(byAdding: dateComponent, to: loadProfileData.startDate!)!
+//    }
+    
     var predictionTime: Int {
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute prediction time")}
         let tempo: Double
@@ -97,8 +105,8 @@ struct DataSource {
         let dateFormatter = DateFormatter()
         var dayCounter = 0
         while daysToTarget > 0 {
-            dayCounter += 1
             dateComponent.day = dayCounter
+            dayCounter += 1
             let analizedDate = calendar.date(byAdding: dateComponent, to: startingProfileDate!)
             let year = dateFormatter.calendar.component(.year, from: analizedDate!)
             let month = dateFormatter.calendar.component(.month, from: analizedDate!)
@@ -121,7 +129,6 @@ struct DataSource {
     var numberOfEmptySpace = 0 //empty spaces at beginning of calendar
     var numberOfNextEmptySpace = 0
     var numberOfPreviousEmpySpace = 0
-
 
     //MARK: - view controller refresh functions
 
