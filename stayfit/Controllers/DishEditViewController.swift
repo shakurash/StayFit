@@ -24,7 +24,4 @@ class DishEditViewController: UIViewController {
                    loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
         }
     }
-
-   
-
 }

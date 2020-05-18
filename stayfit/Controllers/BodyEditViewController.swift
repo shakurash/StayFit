@@ -143,6 +143,13 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == profileMassTextLabel {
+            return false
+        }
+        return true
+    }
+    
     //MARK: - datepicker format preparation
     
     @objc func dateChanged() {

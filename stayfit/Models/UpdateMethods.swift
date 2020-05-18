@@ -62,6 +62,19 @@ struct UpdateMethods {
                 case "8": myProfile?.kolacja = myData
                 default: break                    
                 }
+            } else if let myData = dataToSave as? MeasurementsData {
+                if id != nil {
+                    if let arrayOfDates = myProfile?.measureArray {
+                        for dates in arrayOfDates {
+                        if dates.date == id {
+                            dates.date = myData.date
+                            dates.newestMass = myData.newestMass
+                            }
+                        }
+                    }
+                } else {
+                   myProfile?.measureArray.append(myData)
+                }
             }
         }
         

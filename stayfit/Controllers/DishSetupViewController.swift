@@ -48,7 +48,6 @@ class DishSetupViewController: UIViewController {
         }
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
@@ -99,8 +98,4 @@ class DishSetupViewController: UIViewController {
             }
         }
     }
-    
-    
-    
-    
 }

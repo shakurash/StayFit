@@ -60,13 +60,14 @@ struct DataSource {
         return PPM * loadProfileData.dayIntense
     }
     
-//    var predictionTimeAsDateFormat: Date {
-//        guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data calculate end Date()")}
-//        let myDate = predictionTime
-//        var dateComponent = DateComponents()
-//        dateComponent.day = myDate
-//        return calendar.date(byAdding: dateComponent, to: loadProfileData.startDate!)!
-//    }
+    var passedTime: Int {
+        guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute CPM")}
+            let profileDate = loadProfileData.startDate
+            let currentDay = Date()
+            let daysPassedSinceStart = calendar.dateComponents([.day], from: profileDate!, to: currentDay)
+            let daysPassed = daysPassedSinceStart.day
+            return predictionTime - daysPassed!
+    }
     
     var predictionTime: Int {
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute prediction time")}
@@ -96,7 +97,7 @@ struct DataSource {
         return abs(timeToGetTarget - Int(realTimeInt))
     }
     
-    func profileTargetDay() -> Array<DataMark> {
+    func profileTargetDay() -> Array<DataMark> { //for callendar to select specific days from beginning of profile and end of gaining target mass
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile savepoint to make target data")}
         var arrayOfDatesToTargetDay: Array<DataMark> = []
         let startingProfileDate = loadProfileData.startDate

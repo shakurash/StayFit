@@ -16,6 +16,7 @@
 		E143CCD52465702A009AD0FE /* IngridientsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143CCD42465702A009AD0FE /* IngridientsModel.swift */; };
 		E143CCD7246594D8009AD0FE /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E143CCD6246594D8009AD0FE /* DataSource.swift */; };
 		E1440560246D44000070D4C7 /* UpdateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144055F246D44000070D4C7 /* UpdateMethods.swift */; };
+		E146433D24714B87007C3664 /* MeasurementsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146433C24714B87007C3664 /* MeasurementsData.swift */; };
 		E152F22C246438C30003E48C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F22B246438C30003E48C /* AppDelegate.swift */; };
 		E152F22E246438C30003E48C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F22D246438C30003E48C /* SceneDelegate.swift */; };
 		E152F230246438C30003E48C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F22F246438C30003E48C /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 		E143CCD42465702A009AD0FE /* IngridientsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientsModel.swift; sourceTree = "<group>"; };
 		E143CCD6246594D8009AD0FE /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		E144055F246D44000070D4C7 /* UpdateMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMethods.swift; sourceTree = "<group>"; };
+		E146433C24714B87007C3664 /* MeasurementsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsData.swift; sourceTree = "<group>"; };
 		E152F228246438C30003E48C /* stayfit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stayfit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E152F22B246438C30003E48C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E152F22D246438C30003E48C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				E142DEA2246C266F004D0CD1 /* CalendarViewCell.swift */,
 				E142DEA4246C4F54004D0CD1 /* CheckBox.swift */,
 				E144055F246D44000070D4C7 /* UpdateMethods.swift */,
+				E146433C24714B87007C3664 /* MeasurementsData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E146433D24714B87007C3664 /* MeasurementsData.swift in Sources */,
 				E1826364247034590012E658 /* MeasurementViewController.swift in Sources */,
 				E152F24524643BF60003E48C /* DishEditViewController.swift in Sources */,
 				E152F24924643CE20003E48C /* CopyDishViewController.swift in Sources */,

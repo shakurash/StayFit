@@ -14,9 +14,10 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var profileEditLabel: UIBarButtonItem!
     @IBOutlet weak var calendarView: UICollectionView!
     @IBOutlet weak var displayCalendarCurrentMonth: UILabel!
-    @IBOutlet weak var cpmInfoLabel: UILabel!
+    @IBOutlet weak var ppmInfoLabel: UILabel!
     @IBOutlet weak var targetInfoLabel: UILabel!
-    @IBOutlet weak var calendarContentView: UIView!
+    //@IBOutlet weak var calendarContentView: UIView!
+    @IBOutlet weak var targetCPMInfoLabel: UILabel!
     
     let realm = try! Realm()
     var dataSource = DataSource()
@@ -46,8 +47,9 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         layout.minimumInteritemSpacing = spacing
         calendarView.collectionViewLayout = layout
         
-        cpmInfoLabel.text = String("\(dataSource.CPM) Kcal")
-        targetInfoLabel.text = String("\(dataSource.predictionTime) Dni")
+        ppmInfoLabel.text = String(format: "%.0f", dataSource.PPM.rounded()) + " Kcal"
+        targetInfoLabel.text = String("\(dataSource.passedTime) Dni") 
+        targetCPMInfoLabel.text = String(format: "%.0f", dataSource.CPM.rounded()) + " Kcal"
     }
     
     // MARK: - Table view data source
