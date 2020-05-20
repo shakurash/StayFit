@@ -1,0 +1,237 @@
+
+/* Class = "UILabel"; text = "8:00"; ObjectID = "1Ut-mp-WNw"; */
+"1Ut-mp-WNw.text" = "8:00";
+
+/* Class = "UILabel"; text = "CPM"; ObjectID = "2gk-AM-Tg6"; */
+"2gk-AM-Tg6.text" = "CPM";
+
+/* Class = "UIButton"; normalTitle = " Deser"; ObjectID = "4me-sF-rmQ"; */
+"4me-sF-rmQ.normalTitle" = " Deser";
+
+/* Class = "UILabel"; text = "Czy włączyć powiadomienia?"; ObjectID = "4pl-Ei-YvW"; */
+"4pl-Ei-YvW.text" = "Czy włączyć powiadomienia?";
+
+/* Class = "UINavigationItem"; title = "Pomiar"; ObjectID = "6tV-Y7-qXs"; */
+"6tV-Y7-qXs.title" = "Pomiar";
+
+/* Class = "UILabel"; text = "20:00"; ObjectID = "7b7-Ak-daP"; */
+"7b7-Ak-daP.text" = "20:00";
+
+/* Class = "UILabel"; text = "Masa ciała:"; ObjectID = "7zR-I9-hz0"; */
+"7zR-I9-hz0.text" = "Masa ciała:";
+
+/* Class = "UILabel"; text = "7:00"; ObjectID = "8Ul-Us-AvM"; */
+"8Ul-Us-AvM.text" = "7:00";
+
+/* Class = "UILabel"; text = "9:00"; ObjectID = "9Nw-OM-EBn"; */
+"9Nw-OM-EBn.text" = "9:00";
+
+/* Class = "UILabel"; text = "Data urodzenia:"; ObjectID = "9mX-YE-ecn"; */
+"9mX-YE-ecn.text" = "Data urodzenia:";
+
+/* Class = "UILabel"; text = "Śr"; ObjectID = "Aem-be-8cC"; */
+"Aem-be-8cC.text" = "Śr";
+
+/* Class = "UIButton"; normalTitle = " Obiad"; ObjectID = "BAG-yv-tHU"; */
+"BAG-yv-tHU.normalTitle" = " Obiad";
+
+/* Class = "UITextField"; placeholder = "Podaj swoją wagę w KG"; ObjectID = "Bf2-IA-2Iu"; */
+"Bf2-IA-2Iu.placeholder" = "Podaj swoją wagę w KG";
+
+/* Class = "UISegmentedControl"; BgS-Pw-mgt.segmentTitles[0] = "1,2"; ObjectID = "BgS-Pw-mgt"; */
+"BgS-Pw-mgt.segmentTitles[0]" = "1,2";
+
+/* Class = "UISegmentedControl"; BgS-Pw-mgt.segmentTitles[1] = "1,4"; ObjectID = "BgS-Pw-mgt"; */
+"BgS-Pw-mgt.segmentTitles[1]" = "1,4";
+
+/* Class = "UISegmentedControl"; BgS-Pw-mgt.segmentTitles[2] = "1,7"; ObjectID = "BgS-Pw-mgt"; */
+"BgS-Pw-mgt.segmentTitles[2]" = "1,7";
+
+/* Class = "UISegmentedControl"; BgS-Pw-mgt.segmentTitles[3] = "2,0"; ObjectID = "BgS-Pw-mgt"; */
+"BgS-Pw-mgt.segmentTitles[3]" = "2,0";
+
+/* Class = "UISegmentedControl"; BgS-Pw-mgt.segmentTitles[4] = "2,4"; ObjectID = "BgS-Pw-mgt"; */
+"BgS-Pw-mgt.segmentTitles[4]" = "2,4";
+
+/* Class = "UILabel"; text = "carbohydrates"; ObjectID = "FRF-ki-8Vb"; */
+"FRF-ki-8Vb.text" = "carbohydrates";
+
+/* Class = "UILabel"; text = "17:00"; ObjectID = "Fgs-hI-MDX"; */
+"Fgs-hI-MDX.text" = "17:00";
+
+/* Class = "UITextField"; placeholder = "Jaką wagę chcesz osiągnąć?"; ObjectID = "FoO-bv-6RT"; */
+"FoO-bv-6RT.placeholder" = "Jaką wagę chcesz osiągnąć?";
+
+/* Class = "UIButton"; normalTitle = " Lunch"; ObjectID = "GsL-0G-oce"; */
+"GsL-0G-oce.normalTitle" = " Lunch";
+
+/* Class = "UILabel"; text = "Tempo osiągnięcia celu"; ObjectID = "I36-0t-a4g"; */
+"I36-0t-a4g.text" = "Tempo osiągnięcia celu";
+
+/* Class = "UILabel"; text = "Cel:"; ObjectID = "I5G-9p-XKB"; */
+"I5G-9p-XKB.text" = "Cel:";
+
+/* Class = "UILabel"; text = "Wzrost:"; ObjectID = "Iqg-4f-1QH"; */
+"Iqg-4f-1QH.text" = "Wzrost:";
+
+/* Class = "UIButton"; normalTitle = " Przystawka"; ObjectID = "Itz-rf-mn8"; */
+"Itz-rf-mn8.normalTitle" = " Przystawka";
+
+/* Class = "UILabel"; text = "Light Mode"; ObjectID = "J9C-D4-2vs"; */
+"J9C-D4-2vs.text" = "Light Mode";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "LxE-ag-Hvp"; */
+"LxE-ag-Hvp.title" = "Back";
+
+/* Class = "UIBarButtonItem"; title = "Edit Dish"; ObjectID = "RLD-NL-hJS"; */
+"RLD-NL-hJS.title" = "Edit Dish";
+
+/* Class = "UILabel"; text = "Pomiar odbył się dnia:"; ObjectID = "Rgc-sJ-MLK"; */
+"Rgc-sJ-MLK.text" = "Pomiar odbył się dnia:";
+
+/* Class = "UIButton"; normalTitle = " Kolacja"; ObjectID = "UrJ-bh-f9b"; */
+"UrJ-bh-f9b.normalTitle" = " Kolacja";
+
+/* Class = "UISegmentedControl"; Wf8-9i-P1e.segmentTitles[0] = "Powolne"; ObjectID = "Wf8-9i-P1e"; */
+"Wf8-9i-P1e.segmentTitles[0]" = "Powolne";
+
+/* Class = "UISegmentedControl"; Wf8-9i-P1e.segmentTitles[1] = "Średnie"; ObjectID = "Wf8-9i-P1e"; */
+"Wf8-9i-P1e.segmentTitles[1]" = "Średnie";
+
+/* Class = "UISegmentedControl"; Wf8-9i-P1e.segmentTitles[2] = "Szybkie"; ObjectID = "Wf8-9i-P1e"; */
+"Wf8-9i-P1e.segmentTitles[2]" = "Szybkie";
+
+/* Class = "UILabel"; text = "Wt"; ObjectID = "YI6-82-mDy"; */
+"YI6-82-mDy.text" = "Wt";
+
+/* Class = "UILabel"; text = "Nd"; ObjectID = "YkQ-Wf-pe9"; */
+"YkQ-Wf-pe9.text" = "Nd";
+
+/* Class = "UILabel"; text = "TARGET"; ObjectID = "ZBq-j9-ZA7"; */
+"ZBq-j9-ZA7.text" = "TARGET";
+
+/* Class = "UILabel"; text = "14:00"; ObjectID = "agq-UN-Rt1"; */
+"agq-UN-Rt1.text" = "14:00";
+
+/* Class = "UILabel"; text = "Sb"; ObjectID = "bow-x9-B5r"; */
+"bow-x9-B5r.text" = "Sb";
+
+/* Class = "UILabel"; text = "Kalorie potrzebne do osiągnięcia celu:"; ObjectID = "c8w-Uc-ffp"; */
+"c8w-Uc-ffp.text" = "Kalorie potrzebne do osiągnięcia celu:";
+
+/* Class = "UITextField"; placeholder = "Wybierz datę urodzenia"; ObjectID = "cSH-xg-wq0"; */
+"cSH-xg-wq0.placeholder" = "Wybierz datę urodzenia";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "cgR-tb-JxJ"; */
+"cgR-tb-JxJ.title" = "Back";
+
+/* Class = "UILabel"; text = "Wybierz konfigurację dań na każdy dzień"; ObjectID = "eRd-J5-Rjk"; */
+"eRd-J5-Rjk.text" = "Wybierz konfigurację dań na każdy dzień";
+
+/* Class = "UIBarButtonItem"; title = "Profile Edit"; ObjectID = "eRh-DG-Ufw"; */
+"eRh-DG-Ufw.title" = "Profile Edit";
+
+/* Class = "UIButton"; normalTitle = " Przekąska"; ObjectID = "eU6-bm-XP0"; */
+"eU6-bm-XP0.normalTitle" = " Przekąska";
+
+/* Class = "UIButton"; normalTitle = "Stwórz Profil"; ObjectID = "ekl-b8-QXF"; */
+"ekl-b8-QXF.normalTitle" = "Stwórz Profil";
+
+/* Class = "UIBarButtonItem"; title = "Add Dish"; ObjectID = "f6G-k0-lbi"; */
+"f6G-k0-lbi.title" = "Add Dish";
+
+/* Class = "UITextField"; placeholder = "Wpisz wagę"; ObjectID = "fNc-E2-b6P"; */
+"fNc-E2-b6P.placeholder" = "Wpisz wagę";
+
+/* Class = "UILabel"; text = "Płeć:"; ObjectID = "gcr-xJ-5Gb"; */
+"gcr-xJ-5Gb.text" = "Płeć:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gzX-EQ-1dT"; */
+"gzX-EQ-1dT.text" = "Label";
+
+/* Class = "UILabel"; text = "13:00"; ObjectID = "h42-SI-hUg"; */
+"h42-SI-hUg.text" = "13:00";
+
+/* Class = "UITextField"; placeholder = "Wpisz swoje imię i nazwisko"; ObjectID = "hcO-F6-5c0"; */
+"hcO-F6-5c0.placeholder" = "Wpisz swoje imię i nazwisko";
+
+/* Class = "UILabel"; text = "Pn"; ObjectID = "hcf-NX-LAp"; */
+"hcf-NX-LAp.text" = "Pn";
+
+/* Class = "UILabel"; text = "Imię:"; ObjectID = "ieP-rd-7sH"; */
+"ieP-rd-7sH.text" = "Imię:";
+
+/* Class = "UITextField"; placeholder = "Podaj wzrost w CM"; ObjectID = "iks-PT-qlr"; */
+"iks-PT-qlr.placeholder" = "Podaj wzrost w CM";
+
+/* Class = "UILabel"; text = "Tłuszcze:"; ObjectID = "l4f-O7-BNP"; */
+"l4f-O7-BNP.text" = "Tłuszcze:";
+
+/* Class = "UILabel"; text = "Osiągniesz swój cel za:"; ObjectID = "lPI-AF-b4s"; */
+"lPI-AF-b4s.text" = "Osiągniesz swój cel za:";
+
+/* Class = "UILabel"; text = "Białka:"; ObjectID = "lgh-n8-RwI"; */
+"lgh-n8-RwI.text" = "Białka:";
+
+/* Class = "UILabel"; text = "6:00"; ObjectID = "oQ7-zU-VBM"; */
+"oQ7-zU-VBM.text" = "6:00";
+
+/* Class = "UINavigationItem"; title = "Profil"; ObjectID = "p8u-bZ-RjZ"; */
+"p8u-bZ-RjZ.title" = "Profil";
+
+/* Class = "UISegmentedControl"; p9o-AV-JJl.segmentTitles[0] = "Male"; ObjectID = "p9o-AV-JJl"; */
+"p9o-AV-JJl.segmentTitles[0]" = "Male";
+
+/* Class = "UISegmentedControl"; p9o-AV-JJl.segmentTitles[1] = "Female"; ObjectID = "p9o-AV-JJl"; */
+"p9o-AV-JJl.segmentTitles[1]" = "Female";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pEK-sg-IGg"; */
+"pEK-sg-IGg.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = " Drugie Danie"; ObjectID = "ps6-9V-YcG"; */
+"ps6-9V-YcG.normalTitle" = " Drugie Danie";
+
+/* Class = "UILabel"; text = "Podaj zmierzoną wagę ciała:"; ObjectID = "qNw-j5-R9T"; */
+"qNw-j5-R9T.text" = "Podaj zmierzoną wagę ciała:";
+
+/* Class = "UIButton"; normalTitle = " Drugie Danie"; ObjectID = "qno-hB-I6G"; */
+"qno-hB-I6G.normalTitle" = " Drugie Danie";
+
+/* Class = "UIBarButtonItem"; title = "Pomiar"; ObjectID = "rEE-Ix-aCY"; */
+"rEE-Ix-aCY.title" = "Pomiar";
+
+/* Class = "UILabel"; text = "KALORIE"; ObjectID = "rZD-xF-S3M"; */
+"rZD-xF-S3M.text" = "KALORIE";
+
+/* Class = "UILabel"; text = "Pt"; ObjectID = "sFy-LN-PJa"; */
+"sFy-LN-PJa.text" = "Pt";
+
+/* Class = "UINavigationItem"; title = "Konfiguracja"; ObjectID = "t5R-Xz-EpH"; */
+"t5R-Xz-EpH.title" = "Konfiguracja";
+
+/* Class = "UILabel"; text = "12:00"; ObjectID = "tXc-ra-XRW"; */
+"tXc-ra-XRW.text" = "12:00";
+
+/* Class = "UILabel"; text = "FATS"; ObjectID = "uCn-hP-vIR"; */
+"uCn-hP-vIR.text" = "FATS";
+
+/* Class = "UIButton"; normalTitle = " Śniadanie"; ObjectID = "uGq-Ce-v8l"; */
+"uGq-Ce-v8l.normalTitle" = " Śniadanie";
+
+/* Class = "UILabel"; text = "Węglowodany:"; ObjectID = "ufP-dY-ezc"; */
+"ufP-dY-ezc.text" = "Węglowodany:";
+
+/* Class = "UILabel"; text = "Dzienne zapotrzebowanie:"; ObjectID = "ve9-8i-t7K"; */
+"ve9-8i-t7K.text" = "Dzienne zapotrzebowanie:";
+
+/* Class = "UILabel"; text = "Intensywność dniowa"; ObjectID = "vpL-NK-Zaw"; */
+"vpL-NK-Zaw.text" = "Intensywność dniowa";
+
+/* Class = "UILabel"; text = "Cz"; ObjectID = "yVN-Y7-GZO"; */
+"yVN-Y7-GZO.text" = "Cz";
+
+/* Class = "UINavigationItem"; title = "Stay Fit"; ObjectID = "ydA-cV-Zpi"; */
+"ydA-cV-Zpi.title" = "Stay Fit";
+
+/* Class = "UILabel"; text = "PROTEINS"; ObjectID = "yoZ-nM-YwF"; */
+"yoZ-nM-YwF.text" = "PROTEINS";

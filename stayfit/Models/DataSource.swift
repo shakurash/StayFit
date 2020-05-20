@@ -47,9 +47,35 @@ struct DataSource {
         }
     }
     
+    func massComputedByMeasurement() -> Double { //if user input new mass - calculate CPM with latest measurement by latest stored date
+        guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute measureMass")}
+        let measureMass = loadProfileData.measureArray
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        var lastestMass: Int = 0
+        
+        if let firstDate = measureMass.first?.date {
+                let lastDate = dateFormatter.date(from: firstDate)
+            if var securedLastDate = lastDate {
+                for date in measureMass {
+                    let dateToCheck = dateFormatter.date(from: date.date)
+                    if let securedDateToCheck = dateToCheck {
+                        if securedLastDate < securedDateToCheck {
+                                securedLastDate = securedDateToCheck
+                                lastestMass = date.newestMass
+                                }
+                            }
+                        }
+                    }
+            return staticValueForGender.mass * Double(lastestMass)
+        } else {
+        return staticValueForGender.mass * Double(loadProfileData.mass)
+        }
+    }
+    
     var PPM: Double {
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute PPM")}
-        let mass = staticValueForGender.mass * Double(loadProfileData.mass)
+        let mass = massComputedByMeasurement()
         let height = staticValueForGender.height * Double(loadProfileData.height)
         let stage = staticValueForGender.stage * Double(age)
         return staticValueForGender.static + mass + height - stage

@@ -28,6 +28,8 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var carbohydratesLeftLabel: UILabel!
     @IBOutlet weak var targetLeftLabel: UILabel!
     
+    @IBOutlet weak var calendarViewHeightCons: NSLayoutConstraint!
+    
     let realm = try! Realm()
     var dataSource = DataSource()
     var myArray = Array<DataMark>()
@@ -55,13 +57,18 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         layout.minimumInteritemSpacing = spacing
         calendarView.collectionViewLayout = layout
         
+        reloadData()
+    }
+    
+    func reloadData() {
         ppmInfoLabel.text = String(format: "%.0f", dataSource.PPM.rounded()) + " Kcal"
-        targetInfoLabel.text = String("\(dataSource.passedTime) Dni") 
+        targetInfoLabel.text = String("\(dataSource.passedTime) Dni")
         targetCPMInfoLabel.text = String(format: "%.0f", dataSource.CPM.rounded()) + " Kcal"
         fatsLabel.text = String("\(dataSource.macroElements.fats) Kcal")
         proteinsLabel.text = String("\(dataSource.macroElements.proteins) Kcal")
         carbohydratesLabel.text = String("\(dataSource.macroElements.carbohydrates) Kcal")
     }
+    
     
     // MARK: - Table view data source
     
@@ -69,6 +76,7 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
         }
+        reloadData()
     }
     
     //MARK: - Calendar setup
@@ -240,6 +248,8 @@ extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        let height = calendarView.collectionViewLayout.collectionViewContentSize.height //everytime phone perspective is rotated - reload layout and make height responsive to the content (without this code the view below will cover calendarview)
+        calendarViewHeightCons.constant = height
         calendarView.collectionViewLayout.invalidateLayout()
     }
 }
