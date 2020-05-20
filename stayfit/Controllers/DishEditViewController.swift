@@ -19,6 +19,7 @@ class DishEditViewController: UIViewController {
     }
 
     // MARK: - Table view data source
+    
     override func viewWillAppear(_ animated: Bool) {
          if let loadProfileData = realm.objects(ProfileModel.self).first {
                    loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)

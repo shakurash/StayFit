@@ -60,6 +60,13 @@ struct DataSource {
         return PPM * loadProfileData.dayIntense
     }
     
+    var macroElements: (fats: Int,proteins: Int,carbohydrates: Int) {
+        let fats = Int(CPM * 0.3) //tłuszcze 30
+        let proteins = Int(CPM * 0.15) //bialko 15
+        let carbohydrates = Int(CPM * 0.55) //weglowodany 55
+        return (fats, proteins, carbohydrates)
+    }
+    
     var passedTime: Int {
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute CPM")}
             let profileDate = loadProfileData.startDate

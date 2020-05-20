@@ -16,8 +16,17 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var displayCalendarCurrentMonth: UILabel!
     @IBOutlet weak var ppmInfoLabel: UILabel!
     @IBOutlet weak var targetInfoLabel: UILabel!
-    //@IBOutlet weak var calendarContentView: UIView!
     @IBOutlet weak var targetCPMInfoLabel: UILabel!
+    @IBOutlet weak var fatsLabel: UILabel!
+    @IBOutlet weak var proteinsLabel: UILabel!
+    @IBOutlet weak var carbohydratesLabel: UILabel!
+    
+    @IBOutlet weak var cpmLeftLabel: UILabel!
+    @IBOutlet weak var caloriesLeftLabel: UILabel!
+    @IBOutlet weak var fatsLeftLabel: UILabel!
+    @IBOutlet weak var proteinLeftLabel: UILabel!
+    @IBOutlet weak var carbohydratesLeftLabel: UILabel!
+    @IBOutlet weak var targetLeftLabel: UILabel!
     
     let realm = try! Realm()
     var dataSource = DataSource()
@@ -36,7 +45,6 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationItem.hidesBackButton = true
         calendarView.delegate = self
         calendarView.dataSource = self
-        calendarView.backgroundColor = .systemGray6
         
         currentMonth = dataSource.months[month]
         displayCalendarCurrentMonth.text = "\(currentMonth) \(year)"
@@ -50,6 +58,9 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         ppmInfoLabel.text = String(format: "%.0f", dataSource.PPM.rounded()) + " Kcal"
         targetInfoLabel.text = String("\(dataSource.passedTime) Dni") 
         targetCPMInfoLabel.text = String(format: "%.0f", dataSource.CPM.rounded()) + " Kcal"
+        fatsLabel.text = String("\(dataSource.macroElements.fats) Kcal")
+        proteinsLabel.text = String("\(dataSource.macroElements.proteins) Kcal")
+        carbohydratesLabel.text = String("\(dataSource.macroElements.carbohydrates) Kcal")
     }
     
     // MARK: - Table view data source
@@ -58,7 +69,6 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
         }
-        
     }
     
     //MARK: - Calendar setup
@@ -77,7 +87,7 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reusableCalendarCell", for: indexPath) as! CalendarViewCell
         
         cell.backgroundColor = .clear
-        cell.dateLabel.textColor = .black
+        cell.dateLabel.textColor = .label
         
         if cell.isHidden {
             cell.isHidden = false
@@ -102,15 +112,14 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         
         for item in myArray {
             if year == item.year && month + 1 == item.month && cell.dateLabel.text == String(item.day) {
-                    cell.backgroundColor = UIColor.lightGray
+                    cell.backgroundColor = UIColor(named: "SecondaryColor")
             }
         }
     
         //select the current day of time and space :)
         if currentMonth == dataSource.months[calendar.component(.month, from: date) - 1] && year == calendar.component(.year, from: date) && indexPath.row + 1 - dataSource.numberOfEmptySpace == day {
-            cell.backgroundColor = UIColor.green
+            cell.backgroundColor = UIColor(named: "PrimaryColor")
         }
-        
         return cell
     }
     

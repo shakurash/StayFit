@@ -9,9 +9,13 @@
 import UIKit
 import RealmSwift
 
-class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
-    @IBOutlet weak var massPickerLabel: UITextField!
+    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var bottomLabel: UILabel!
+    
+    @IBOutlet weak var datePickerLabelStack: UIStackView!
+    
     @IBOutlet weak var datePickerLabel: UIDatePicker!
     @IBOutlet weak var newMassPicker: UITextField!
     
@@ -32,9 +36,11 @@ class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         newMassPicker.inputView = numberPicker
         toolBar.sizeToFit()
+        toolBar.tintColor = UIColor(named: "PrimaryColor")
         toolBar.setItems([toolConstrains, toolButtonDone], animated: true)
         newMassPicker.inputAccessoryView = toolBar
         numberPicker.delegate = self
+        newMassPicker.delegate = self
         
         let myProfile = realm.objects(ProfileModel.self).first
         if let myDate = myProfile?.startDate {
@@ -42,19 +48,49 @@ class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPicke
             datePickerLabel.maximumDate = Date()
         }
         datePickerLabel.addTarget(self, action: #selector(MeasurementViewController.dateValueChanged), for: .valueChanged)
-        measurementDate = datePickerLabel.date
+        measurementDate = datePickerLabel.date //load current day at beginning (more natural for user experience)
     }
     
+    //MARK: - setup for animation
     override func viewWillAppear(_ animated: Bool) {
          if let loadProfileData = realm.objects(ProfileModel.self).first {
                    loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
         }
+        
+        topLabel.alpha = 0.0
+        bottomLabel.alpha = 0.0
+        newMassPicker.alpha = 0.0
+        datePickerLabelStack.alpha = 0.0
+        datePickerLabel.transform = CGAffineTransform(scaleX: 1.0, y: 0.0)
     }
     
-    @objc func dateValueChanged() {
+    //MARK: - animation execute
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            self.topLabel.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
+            self.newMassPicker.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseOut, animations: {
+            self.bottomLabel.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseOut, animations: {
+            self.datePickerLabelStack.alpha = 1.0
+            self.datePickerLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+    }
+    
+    // delegate methods
+    @objc func dateValueChanged(_ sender: UIDatePicker) {
         measurementDate = datePickerLabel.date
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return false
+    }
+    
+    //MARK: - save method and validation - if its exist then user choice to override
     @IBAction func saveMeasurementPressed(_ sender: UIBarButtonItem) {
         if let date = measurementDate, let mass = newMassPicker.text {
             let dateFormatter = DateFormatter()
@@ -71,6 +107,7 @@ class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPicke
             } else {
                 let alert = UIAlertController(title: "Brak wagi", message: "Proszę podać poprawną wartość", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                alert.view.tintColor = UIColor(named: "PrimaryColor")
                 self.present(alert, animated: true, completion: nil)
             }
         }
@@ -87,6 +124,7 @@ class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPicke
                             let sendDateToOverride = String(date.date)
                             self.updateMethods.saveData(dataToSave: dateToCheck, id: sendDateToOverride)
                             _ = self.navigationController?.popViewController(animated: true)}))
+                        alert.view.tintColor = UIColor(named: "PrimaryColor")
                         self.present(alert, animated: true, completion: nil)
                     foundRecord = true
                 }

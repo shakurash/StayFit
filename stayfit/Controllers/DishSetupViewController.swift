@@ -22,8 +22,30 @@ class DishSetupViewController: UIViewController {
     @IBOutlet weak var przekaskaCheckBox: CheckBox!
     @IBOutlet weak var kolacjaCheckBox: CheckBox!
 
+    @IBOutlet weak var przystawkaStack: UIStackView!
+    @IBOutlet weak var sniadanieStack: UIStackView!
+    @IBOutlet weak var drugiesniadanieStack: UIStackView!
+    @IBOutlet weak var deserStack: UIStackView!
+    @IBOutlet weak var obiadStack: UIStackView!
+    @IBOutlet weak var lunchStack: UIStackView!
+    @IBOutlet weak var drugiedanieStack: UIStackView!
+    @IBOutlet weak var przekaskaStack: UIStackView!
+    @IBOutlet weak var kolacjaStack: UIStackView!
+    @IBOutlet weak var bottomStack: UIStackView!
+    
+    @IBOutlet weak var topLabel: UILabel!
     @IBOutlet var timerDisplayLabel: [UILabel]!
     @IBOutlet var stepperValues: [UIStepper]!
+    
+    @IBOutlet weak var przystawkaRightStackCons: NSLayoutConstraint!
+    @IBOutlet weak var sniadanieRightStackCons: NSLayoutConstraint!
+    @IBOutlet weak var drugiesniadanieRightStackCons: NSLayoutConstraint!
+    @IBOutlet weak var deserRightStackCons: NSLayoutConstraint!
+    @IBOutlet weak var obiadRightStackCons: NSLayoutConstraint!
+    @IBOutlet weak var lunchRightStackCons: NSLayoutConstraint!
+    @IBOutlet weak var drugiedanieRightStackCons: NSLayoutConstraint!
+    @IBOutlet weak var przekaskaRightStackCons: NSLayoutConstraint!
+    @IBOutlet weak var kolacjaRightStackCons: NSLayoutConstraint!
     
     let updateMethods = UpdateMethods()
     let realm = try! Realm()
@@ -51,8 +73,93 @@ class DishSetupViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
+            
+    //MARK: - setup for animations
+            
+            topLabel.alpha = 0.0
+            bottomStack.alpha = 0.0
+            
+            przystawkaStack.isHidden = true
+            sniadanieStack.isHidden = true
+            drugiesniadanieStack.isHidden = true
+            deserStack.isHidden = true
+            obiadStack.isHidden = true
+            lunchStack.isHidden = true
+            drugiedanieStack.isHidden = true
+            przekaskaStack.isHidden = true
+            kolacjaStack.isHidden = true
+            
+            przystawkaRightStackCons.constant -= view.bounds.width
+            sniadanieRightStackCons.constant -= view.bounds.width
+            drugiesniadanieRightStackCons.constant -= view.bounds.width
+            deserRightStackCons.constant -= view.bounds.width
+            obiadRightStackCons.constant -= view.bounds.width
+            lunchRightStackCons.constant -= view.bounds.width
+            drugiedanieRightStackCons.constant -= view.bounds.width
+            przekaskaRightStackCons.constant -= view.bounds.width
+            kolacjaRightStackCons.constant -= view.bounds.width
         }
     }
+    
+    //MARK:  - animations play
+    
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.1){
+            self.przystawkaStack.isHidden = false
+        }
+        przystawkaRightStackCons.constant = 160
+        UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveEaseOut, animations: {
+            self.sniadanieStack.isHidden = false
+            self.view.layoutIfNeeded()
+        })
+        sniadanieRightStackCons.constant = 160
+        UIView.animate(withDuration: 0.1, delay: 0.2, options: .curveEaseOut, animations: {
+            self.drugiesniadanieStack.isHidden = false
+            self.view.layoutIfNeeded()
+        })
+        drugiesniadanieRightStackCons.constant = 160
+        UIView.animate(withDuration: 0.1, delay: 0.3, options: .curveEaseOut, animations: {
+            self.deserStack.isHidden = false
+            self.view.layoutIfNeeded()
+        })
+        deserRightStackCons.constant = 160
+        UIView.animate(withDuration: 0.1, delay: 0.4, options: .curveEaseOut, animations: {
+            self.obiadStack.isHidden = false
+            self.view.layoutIfNeeded()
+        })
+        obiadRightStackCons.constant = 160
+        UIView.animate(withDuration: 0.1, delay: 0.5, options: .curveEaseOut, animations: {
+            self.lunchStack.isHidden = false
+            self.view.layoutIfNeeded()
+        })
+        lunchRightStackCons.constant = 160
+        UIView.animate(withDuration: 0.1, delay: 0.6, options: .curveEaseOut, animations: {
+            self.drugiedanieStack.isHidden = false
+            self.view.layoutIfNeeded()
+        })
+        drugiedanieRightStackCons.constant = 160
+        UIView.animate(withDuration: 0.1, delay: 0.7, options: .curveEaseOut, animations: {
+            self.przekaskaStack.isHidden = false
+            self.view.layoutIfNeeded()
+        })
+        przekaskaRightStackCons.constant = 160
+        UIView.animate(withDuration: 0.1, delay: 0.8, options: .curveEaseOut, animations: {
+            self.kolacjaStack.isHidden = false
+            self.view.layoutIfNeeded()
+        })
+        kolacjaRightStackCons.constant = 160
+        UIView.animate(withDuration: 0.1, delay: 0.9, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseOut, animations: {
+            self.topLabel.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.9, options: .curveEaseOut, animations: {
+            self.bottomStack.alpha = 1.0
+        })
+    }
+    
+    //MARK: - loading values from profile
     
     func updateView(with: [Any]) {
         let timeArray = with

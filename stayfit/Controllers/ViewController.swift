@@ -33,14 +33,17 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
         if (realm.objects(ProfileModel.self).first != nil) {
               let myProfile = realm.objects(ProfileModel.self).first
+            if (myProfile?.lightMode) != nil { //check if profile have info about dark mode and set it to navigationBar if not then check for user style preferences
+                myProfile!.lightMode ? (navigationController?.navigationBar.barTintColor = UIColor(named: "SecondaryColor")):(navigationController?.navigationBar.barTintColor = UIColor(named: "NavigationBarColor"))
+            } else {
+                overrideUserInterfaceStyle == .light ? (navigationController?.navigationBar.barTintColor = UIColor(named: "SecondaryColor")):(navigationController?.navigationBar.barTintColor = UIColor(named: "NavigationBarColor"))
+            }
             if myProfile?.date != nil && myProfile?.startDate != nil {
                 performSegue(withIdentifier: "FromStartToMainMenu", sender: self)
             }
         }
     }
 }
-
-

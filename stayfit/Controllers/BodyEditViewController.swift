@@ -21,6 +21,24 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var genderSelectorDisplay: UISegmentedControl!
     @IBOutlet weak var tempoSelectorDisplay: UISegmentedControl!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var intenseLabel: UILabel!
+    @IBOutlet weak var massLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var targetLabel: UILabel!
+    @IBOutlet weak var tempoLabel: UILabel!
+    @IBOutlet weak var lightModeLabel: UILabel!
+    
+    @IBOutlet weak var nameLabelStack: UIStackView!
+    @IBOutlet weak var massLabelStack: UIStackView!
+    @IBOutlet weak var heightLabelStack: UIStackView!
+    @IBOutlet weak var ageLabelStack: UIStackView!
+    @IBOutlet weak var genderLabelStack: UIStackView!
+    @IBOutlet weak var targetLabelStack: UIStackView!
+    @IBOutlet weak var lightModeLabelStack: UIStackView!
+    
     private var datePicker = UIDatePicker()
     private var numberPicker = UIPickerView()
     
@@ -43,6 +61,7 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         profileNameTextLabel.addTarget(self, action: #selector(BodyEditViewController.textFieldDidChange(_:)), for: .editingChanged)
         
         datePicker.datePickerMode = .date
+        datePicker.locale = Locale.current
         profileDatePickerTextLabel.inputView = datePicker
         
         profileMassTextLabel.inputView = numberPicker
@@ -51,8 +70,12 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         numberPicker.delegate = self
         profileNameTextLabel.delegate = self
+        profileMassTextLabel.delegate = self    //set delegates to PickerViews to disable writing (confuses user if enabled)
+        profileHeightTextLabel.delegate = self
+        profileTargetTextLabel.delegate = self
         
         toolBar.sizeToFit()
+        toolBar.tintColor = UIColor(named: "PrimaryColor")
         toolBar.setItems([toolConstrains, toolButtonDone], animated: true)
         
         profileDatePickerTextLabel.inputAccessoryView = toolBar
@@ -73,6 +96,7 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         } else {
             let alert = UIAlertController(title: "Alert", message: "Proszę podać datę urodzenia", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil ))
+            alert.view.tintColor = UIColor(named: "PrimaryColor")
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -93,7 +117,84 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             dayIntenseSelectorDisplay.selectedSegmentIndex = setProperIndex(data: loadProfileData.dayIntense)
             genderSelectorDisplay.selectedSegmentIndex = setProperIndex(gender: loadProfileData.gender)
             tempoSelectorDisplay.selectedSegmentIndex = setProperIndex(tempo: loadProfileData.tempo)
+            
+    //MARK: - setup the animation
+            
+            nameLabelStack.alpha = 0.0
+            massLabelStack.alpha = 0.0
+            heightLabelStack.alpha = 0.0
+            ageLabelStack.alpha = 0.0
+            genderLabelStack.alpha = 0.0
+            targetLabelStack.alpha = 0.0
+            tempoLabel.alpha = 0.0
+            lightModeLabelStack.alpha = 0.0
+            
+            nameLabel.alpha = 0.0
+            intenseLabel.alpha = 0.0
+            massLabel.alpha = 0.0
+            heightLabel.alpha = 0.0
+            ageLabel.alpha = 0.0
+            genderLabel.alpha = 0.0
+            targetLabel.alpha = 0.0
+            lightModeLabel.alpha = 0.0
+            
+            self.dayIntenseSelectorDisplay.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+            self.genderSelectorDisplay.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+            self.tempoSelectorDisplay.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
         }
+    }
+    
+    //MARK: - animation block
+    
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.1){
+            self.nameLabelStack.isHidden = false
+            self.nameLabelStack.alpha = 1.0
+        }
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
+            self.nameLabel.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseOut, animations: {
+            self.intenseLabel.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.dayIntenseSelectorDisplay.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.4, options: .curveEaseOut, animations: {
+            self.massLabelStack.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
+            self.massLabel.alpha = 1.0
+            self.heightLabelStack.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.6, options: .curveEaseOut, animations: {
+            self.heightLabel.alpha = 1.0
+            self.ageLabelStack.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.7, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.genderSelectorDisplay.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+            self.ageLabel.alpha = 1.0
+            self.genderLabelStack.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.8, options: .curveEaseOut, animations: {
+            self.genderLabel.alpha = 1.0
+            self.targetLabelStack.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.9, options: .curveEaseOut, animations: {
+            self.targetLabel.alpha = 1.0
+            self.tempoLabel.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 1.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {
+            self.tempoSelectorDisplay.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, delay: 1.1, options: .curveEaseOut, animations: {
+            self.lightModeLabel.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 1.2, options: .curveEaseOut, animations: {
+            self.lightModeLabelStack.alpha = 1.0
+        })
     }
     
     func setProperIndex(data: Double? = nil, gender: String? = nil, tempo: String? = nil) -> Int {
@@ -144,7 +245,7 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == profileMassTextLabel {
+        if textField == profileMassTextLabel || textField == profileTargetTextLabel || textField == profileHeightTextLabel {
             return false
         }
         return true
@@ -266,9 +367,11 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if lightModeSwitch.isOn {
             status = true
             overrideUserInterfaceStyle = .light
+            navigationController?.navigationBar.barTintColor = UIColor(named: "SecondaryColor")
         } else {
             status = false
             overrideUserInterfaceStyle = .dark
+            navigationController?.navigationBar.barTintColor = UIColor(named: "NavigationBarColor")
         }
         if let securedStatus = status {
             updateMethods.saveData(dataToSave: securedStatus, id: "profileMode")
