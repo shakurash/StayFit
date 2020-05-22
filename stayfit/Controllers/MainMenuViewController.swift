@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var profileEditLabel: UIBarButtonItem!
     @IBOutlet weak var calendarView: UICollectionView!
@@ -29,6 +29,9 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var targetLeftLabel: UILabel!
     
     @IBOutlet weak var calendarViewHeightCons: NSLayoutConstraint!
+    @IBOutlet weak var measurementsViewHeightCons: NSLayoutConstraint!
+    
+    @IBOutlet weak var measurementsView: UITableView!
     
     let realm = try! Realm()
     var dataSource = DataSource()
@@ -47,6 +50,8 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationItem.hidesBackButton = true
         calendarView.delegate = self
         calendarView.dataSource = self
+        measurementsView.delegate = self
+        measurementsView.dataSource = self
         
         currentMonth = dataSource.months[month]
         displayCalendarCurrentMonth.text = "\(currentMonth) \(year)"
@@ -76,7 +81,7 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
         }
-        reloadData()
+        reloadData() //reload labels if you came from measurement VC and create new measure data to compute
     }
     
     //MARK: - Calendar setup
@@ -251,6 +256,28 @@ extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
         let height = calendarView.collectionViewLayout.collectionViewContentSize.height //everytime phone perspective is rotated - reload layout and make height responsive to the content (without this code the view below will cover calendarview)
         calendarViewHeightCons.constant = height
         calendarView.collectionViewLayout.invalidateLayout()
+    }
+    
+//MARK: - tableview setup
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let loadProfileData = realm.objects(ProfileModel.self).first {
+            return loadProfileData.measureArray.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        if let loadProfileData = realm.objects(ProfileModel.self).first {
+            let arrayOfMeasures = loadProfileData.measureArray //DOROBIC SORTOWANIE PO DATE! ZMIENIC W BAZIE DANYCH DATE Z STRING NA NSDATE() I ZMIENIC ZAPIS DATY!
+            cell.textLabel!.text = "pomiar \(arrayOfMeasures[indexPath.row].date) wynosił \(arrayOfMeasures[indexPath.row].newestMass) KG"
+            return cell
+        } else {
+            cell.textLabel!.text = ""
+            return cell
+        }
     }
 }
 

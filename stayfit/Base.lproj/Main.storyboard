@@ -15,7 +15,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YuP-OD-ffh">
@@ -356,7 +356,7 @@
             <objects>
                 <viewController id="X6I-p5-q6r" customClass="MainMenuViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pbx-7m-9xI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYg-F5-Cgb">
@@ -396,10 +396,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uai-bZ-gZF">
-                                        <rect key="frame" x="0.0" y="10" width="414" height="812.5"/>
+                                        <rect key="frame" x="0.0" y="10" width="414" height="904.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="D3o-ei-sc9">
-                                                <rect key="frame" x="20" y="0.0" width="374" height="812.5"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="904.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="efZ-vT-dy1">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="22"/>
@@ -698,11 +698,17 @@
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qvA-fB-OQI">
-                                                        <rect key="frame" x="0.0" y="684.5" width="374" height="128"/>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qvA-fB-OQI">
+                                                        <rect key="frame" x="0.0" y="684.5" width="374" height="220"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" priority="999" constant="220" id="WMK-8X-RBF"/>
+                                                        </constraints>
+                                                        <color key="separatorColor" name="PrimaryColor"/>
+                                                        <color key="sectionIndexColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="sectionIndexBackgroundColor" name="SecondaryColor"/>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1nR-w0-kTc">
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="1nR-w0-kTc">
                                                                 <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cell" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1nR-w0-kTc" id="enT-kC-lHc">
@@ -763,6 +769,7 @@
                         <outlet property="displayCalendarCurrentMonth" destination="pEK-sg-IGg" id="TI8-51-zoq"/>
                         <outlet property="fatsLabel" destination="uCn-hP-vIR" id="Vqk-y3-8M7"/>
                         <outlet property="fatsLeftLabel" destination="l4f-O7-BNP" id="Wr3-Lm-MDI"/>
+                        <outlet property="measurementsView" destination="qvA-fB-OQI" id="1FO-V3-g1g"/>
                         <outlet property="ppmInfoLabel" destination="2gk-AM-Tg6" id="Laf-gG-A4s"/>
                         <outlet property="profileEditLabel" destination="eRh-DG-Ufw" id="OCF-CW-XJP"/>
                         <outlet property="proteinLeftLabel" destination="lgh-n8-RwI" id="bEM-Da-Od4"/>
