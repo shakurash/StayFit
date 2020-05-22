@@ -29,9 +29,10 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var targetLeftLabel: UILabel!
     
     @IBOutlet weak var calendarViewHeightCons: NSLayoutConstraint!
-    @IBOutlet weak var measurementsViewHeightCons: NSLayoutConstraint!
     
     @IBOutlet weak var measurementsView: UITableView!
+    
+    @IBOutlet weak var showMeasureButton: UIButton!
     
     let realm = try! Realm()
     var dataSource = DataSource()
@@ -62,18 +63,29 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         layout.minimumInteritemSpacing = spacing
         calendarView.collectionViewLayout = layout
         
-        reloadData()
+        reloadVisibleData()
     }
     
-    func reloadData() {
+    func reloadVisibleData() {
         ppmInfoLabel.text = String(format: "%.0f", dataSource.PPM.rounded()) + " Kcal"
-        targetInfoLabel.text = String("\(dataSource.passedTime) Dni")
+        targetInfoLabel.text = String("\(dataSource.passedTime) \(NSLocalizedString("Dni", comment: ""))")
         targetCPMInfoLabel.text = String(format: "%.0f", dataSource.CPM.rounded()) + " Kcal"
         fatsLabel.text = String("\(dataSource.macroElements.fats) Kcal")
         proteinsLabel.text = String("\(dataSource.macroElements.proteins) Kcal")
         carbohydratesLabel.text = String("\(dataSource.macroElements.carbohydrates) Kcal")
+        measurementsView.reloadData()
     }
     
+    @IBAction func showMeasureButtonPressed(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.measurementsView.isHidden = !self.measurementsView.isHidden
+            if self.measurementsView.isHidden {
+                self.measurementsView.alpha = 0.0
+            } else {
+                self.measurementsView.alpha = 1.0
+            }
+        })
+    }
     
     // MARK: - Table view data source
     
@@ -81,7 +93,9 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
         }
-        reloadData() //reload labels if you came from measurement VC and create new measure data to compute
+        reloadVisibleData() //reload labels if you came from measurement VC and create new measure data to compute
+        measurementsView.isHidden = true
+        measurementsView.alpha = 0.0
     }
     
     //MARK: - Calendar setup
@@ -189,25 +203,25 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func updatingDate(direction: Int) {
         if direction == 1 {
-            if currentMonth == "Grudzień" {
+            if currentMonth == "Grudzień" || currentMonth == "December" {
                 month = 0
                 year += 1
             }
             dataSource.direction = 1
             currentYearIsLeapYear()
             getStartPosition()
-            if currentMonth != "Grudzień" {
+            if currentMonth != "Grudzień" || currentMonth != "December" {
                 month += 1
             }
             currentMonth = dataSource.months[month]
             displayCalendarCurrentMonth.text = "\(currentMonth) \(year)"
             calendarView.reloadData()
         } else if direction == -1 {
-            if currentMonth == "Styczeń" {
+            if currentMonth == "Styczeń" || currentMonth == "January"{
                 month = 11
                 year -= 1
             }
-            if currentMonth != "Styczeń" {
+            if currentMonth != "Styczeń" || currentMonth != "January"{
                 month -= 1
             }
             dataSource.direction = -1
@@ -271,13 +285,19 @@ extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         if let loadProfileData = realm.objects(ProfileModel.self).first {
-            let arrayOfMeasures = loadProfileData.measureArray //DOROBIC SORTOWANIE PO DATE! ZMIENIC W BAZIE DANYCH DATE Z STRING NA NSDATE() I ZMIENIC ZAPIS DATY!
-            cell.textLabel!.text = "pomiar \(arrayOfMeasures[indexPath.row].date) wynosił \(arrayOfMeasures[indexPath.row].newestMass) KG"
+            let arrayOfMeasures = loadProfileData.measureArray 
+            let sortedMeasures = arrayOfMeasures.sorted(byKeyPath: "date", ascending: false)
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .none
+            dateFormatter.dateStyle = .medium
+            cell.textLabel!.text = "\(NSLocalizedString("Pomiar", comment: "")) \(dateFormatter.string(from: sortedMeasures[indexPath.row].date)) \(NSLocalizedString("wynosił", comment: "")) \(sortedMeasures[indexPath.row].newestMass) KG"
             return cell
         } else {
             cell.textLabel!.text = ""
             return cell
         }
     }
+    
+    
 }
 

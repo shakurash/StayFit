@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  stayfit
+
+  Created by Robert on 22/05/2020.
+  Copyright © 2020 Robert. All rights reserved.
+*/
+
+"Brak wagi" = "No weight";
+"Proszę podać poprawną wartość" = "Please enter a valid value";
+"Taka data już istnieje!" = "This date already exists!";
+"Czy chcesz nadpisać pomiar wagi?" = "Do you want to overwrite weight measurement?";
+"Nie" = "No";
+"Tak" = "Yes";
+"Proszę podać datę urodzenia" = "Please enter your date of birth";
+"Dni" = "Days";
+"Pomiar" = "Measurement";
+"wynosił" = "was";
+
+"Styczeń" = "January";
+"Luty" = "February";
+"Marzec" = "March";
+"Kwiecień" = "April";
+"Maj" = "May";
+"Czerwiec" = "June";
+"Lipiec" = "July";
+"Sierpień" = "August";
+"Wrzesień" = "September";
+"Październik" = "October";
+"Listopad" = "November";
+"Grudzień" = "December";

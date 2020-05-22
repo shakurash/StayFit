@@ -18,9 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
     }
-    
-    
-    
+   
     @IBAction func createProfilePressed(_ sender: UIButton) {
         do {
             try realm.write {

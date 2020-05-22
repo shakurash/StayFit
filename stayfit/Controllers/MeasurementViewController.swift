@@ -93,19 +93,15 @@ class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPicke
     //MARK: - save method and validation - if its exist then user choice to override
     @IBAction func saveMeasurementPressed(_ sender: UIBarButtonItem) {
         if let date = measurementDate, let mass = newMassPicker.text {
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone.current // need timezone of current PC or it will save bad date -/+ 24h
-            dateFormatter.dateFormat = "dd/MM/yyyy"
-            let measureData = dateFormatter.string(from: date)
             let measureMass = mass.dropLast(3)
             let newestMeasurements = measureModel
             let stringMass = String(measureMass)
             if let securedMass = Int(stringMass) {
             newestMeasurements.newestMass = Int(securedMass)
-            newestMeasurements.date = measureData
+            newestMeasurements.date = date
             validateCurrentData(dateToCheck: newestMeasurements) //check if data to save isnt already in memory. If yes -> ask user if he wants to override
             } else {
-                let alert = UIAlertController(title: "Brak wagi", message: "Proszę podać poprawną wartość", preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("Brak wagi", comment: ""), message: NSLocalizedString("Proszę podać poprawną wartość", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 alert.view.tintColor = UIColor(named: "PrimaryColor")
                 self.present(alert, animated: true, completion: nil)
@@ -116,13 +112,19 @@ class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPicke
     func validateCurrentData(dateToCheck: MeasurementsData) {
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             var foundRecord = false
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .none
+            dateFormatter.dateStyle = .medium
             for date in loadProfileData.measureArray {
-                if date.date == dateToCheck.date {
-                        let alert = UIAlertController(title: "Taka data już istnieje!", message: "Czy chcesz nadpisać pomiar wagi?", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Nie", style: .default, handler: nil))
-                        alert.addAction(UIAlertAction(title: "Tak", style: .default, handler: {(alert: UIAlertAction!) in
-                            let sendDateToOverride = String(date.date)
-                            self.updateMethods.saveData(dataToSave: dateToCheck, id: sendDateToOverride)
+                let dateItemFromProfile = dateFormatter.string(from: date.date)
+                let dateToLook = dateFormatter.string(from: dateToCheck.date)
+                print(dateItemFromProfile)
+                print(dateToLook)
+                if dateItemFromProfile == dateToLook {
+                        let alert = UIAlertController(title: NSLocalizedString("Taka data już istnieje!", comment: ""), message: NSLocalizedString("Czy chcesz nadpisać pomiar wagi?", comment: ""), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("Nie", comment: ""), style: .default, handler: nil))
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("Tak", comment: ""), style: .default, handler: {(alert: UIAlertAction!) in
+                            self.updateMethods.saveData(dataToSave: dateToCheck, id: "override")
                             _ = self.navigationController?.popViewController(animated: true)}))
                         alert.view.tintColor = UIColor(named: "PrimaryColor")
                         self.present(alert, animated: true, completion: nil)
@@ -157,14 +159,7 @@ func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent c
         view.endEditing(true)
     }
 }
-//    @objc func dateChanged() {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd/MM/yyyy"
-//        profileDatePickerTextLabel.text = formatter.string(from: datePicker.date)
-//        if let securedData = profileDatePickerTextLabel.text {
-//            updateMethods.saveData(dataToSave: securedData, id: "profileDate" )
-//        }
-//    }
+
 
 
 

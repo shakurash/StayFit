@@ -50,23 +50,23 @@ struct DataSource {
     func massComputedByMeasurement() -> Double { //if user input new mass - calculate CPM with latest measurement by latest stored date
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute measureMass")}
         let measureMass = loadProfileData.measureArray
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd/MM/yyyy"
         var lastestMass: Int = 0
         
-        if let firstDate = measureMass.first?.date {
-                let lastDate = dateFormatter.date(from: firstDate)
-            if var securedLastDate = lastDate {
+        if var lastDate = measureMass.first?.date {
+                //let lastDate = dateFormatter.date(from: firstDate)
+            //if var securedLastDate = lastDate {
                 for date in measureMass {
-                    let dateToCheck = dateFormatter.date(from: date.date)
-                    if let securedDateToCheck = dateToCheck {
-                        if securedLastDate < securedDateToCheck {
-                                securedLastDate = securedDateToCheck
-                                lastestMass = date.newestMass
+                    //let dateToCheck = dateFormatter.date(from: date.date)
+                   // if let securedDateToCheck = dateToCheck {
+                    if lastDate < date.date {
+                        lastDate = date.date
+                        lastestMass = date.newestMass
                                 }
-                            }
+                           // }
                         }
-                    }
+                    //}
             return staticValueForGender.mass * Double(lastestMass)
         } else {
         return staticValueForGender.mass * Double(loadProfileData.mass)
@@ -154,7 +154,7 @@ struct DataSource {
     
     //MARK: - calendar setup
     
-    let months = ["Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień"]
+    let months = [NSLocalizedString("Styczeń", comment: ""),NSLocalizedString("Luty", comment: "") ,NSLocalizedString("Marzec", comment: "") ,NSLocalizedString("Kwiecień", comment: "") ,NSLocalizedString("Maj", comment: "") ,NSLocalizedString("Czerwiec", comment: "") ,NSLocalizedString("Lipiec", comment: "") ,NSLocalizedString("Sierpień", comment: "") ,NSLocalizedString("Wrzesień", comment: "") ,NSLocalizedString("Październik", comment: "") ,NSLocalizedString("Listopad", comment: "") ,NSLocalizedString("Grudzień", comment: "")]
     let weekDays = [ "Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"]
     var numberInMonths = [31,28,31,30,31,30,31,31,30,31,30,31]
     

@@ -94,7 +94,7 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             updateMethods.saveData(dataToSave: profileTimeStart)
             performSegue(withIdentifier: "FromEditProfileToMainMenu", sender: self)
         } else {
-            let alert = UIAlertController(title: "Alert", message: "Proszę podać datę urodzenia", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Alert", message: NSLocalizedString("Proszę podać datę urodzenia", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil ))
             alert.view.tintColor = UIColor(named: "PrimaryColor")
             self.present(alert, animated: true, completion: nil)

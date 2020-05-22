@@ -63,10 +63,15 @@ struct UpdateMethods {
                 default: break                    
                 }
             } else if let myData = dataToSave as? MeasurementsData {
-                if id != nil {
+                if id == "override" {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.timeStyle = .none
+                    dateFormatter.dateStyle = .medium
                     if let arrayOfDates = myProfile?.measureArray {
                         for dates in arrayOfDates {
-                        if dates.date == id {
+                            let dateItemInProfile = dateFormatter.string(from: dates.date)
+                            let compareDate = dateFormatter.string(from: myData.date)
+                            if dateItemInProfile == compareDate {
                             dates.date = myData.date
                             dates.newestMass = myData.newestMass
                             }
