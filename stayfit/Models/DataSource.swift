@@ -140,13 +140,12 @@ struct DataSource {
     func profileTargetDay() -> Array<DataMark> { //for callendar to select specific days from beginning of profile and end of gaining target mass
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile savepoint to make target data")}
         var arrayOfDatesToTargetDay: Array<DataMark> = []
-        var lastSavedDates = Array<LastSavedDates> = []
         let startingProfileDate = loadProfileData.startDate
         var daysToTarget = predictionTime.daysToTarget
         var dateComponent = DateComponents()
         let dateFormatter = DateFormatter()
         var dayCounter = 0
-        if daysToTarget > 0 { //if target not meet then populate array with next days/month/years for calendar. If target meet then load historical dates
+//        if daysToTarget > 0 { //if target not meet then populate array with next days/month/years for calendar. If target meet then load historical dates
         while daysToTarget > 0 {
             dateComponent.day = dayCounter
             dayCounter += 1
@@ -155,15 +154,13 @@ struct DataSource {
             let month = dateFormatter.calendar.component(.month, from: analizedDate!)
             let day = dateFormatter.calendar.component(.day, from: analizedDate!)
             let object = DataMark(year: year, month: month, day: day)
-            let copyObject = lastSavedDates(day: day, month: month, year: year)
-           
-           
+            arrayOfDatesToTargetDay.append(object)
             daysToTarget -= 1
         }
         return arrayOfDatesToTargetDay
-        } else {
-            return loadProfileData.lastSavedDates
-        }
+//        } else {
+//            return loadProfileData.lastSavedDates
+//        }
     }
     
     //MARK: - calendar setup

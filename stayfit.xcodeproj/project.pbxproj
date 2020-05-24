@@ -30,7 +30,6 @@
 		E152F24724643CAF0003E48C /* DishSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F24624643CAF0003E48C /* DishSetupViewController.swift */; };
 		E152F24924643CE20003E48C /* CopyDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F24824643CE20003E48C /* CopyDishViewController.swift */; };
 		E152F24B24643D0A0003E48C /* IngridientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F24A24643D0A0003E48C /* IngridientsViewController.swift */; };
-		E174DB08247AA61C005C236D /* LastSavedDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174DB07247AA61C005C236D /* LastSavedDates.swift */; };
 		E1826364247034590012E658 /* MeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1826363247034590012E658 /* MeasurementViewController.swift */; };
 		E1D86FDC2467EBD70080BBCE /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D86FDB2467EBD70080BBCE /* Calendar.swift */; };
 /* End PBXBuildFile section */
@@ -67,7 +66,6 @@
 		E152F24624643CAF0003E48C /* DishSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishSetupViewController.swift; sourceTree = "<group>"; };
 		E152F24824643CE20003E48C /* CopyDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyDishViewController.swift; sourceTree = "<group>"; };
 		E152F24A24643D0A0003E48C /* IngridientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngridientsViewController.swift; sourceTree = "<group>"; };
-		E174DB07247AA61C005C236D /* LastSavedDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastSavedDates.swift; sourceTree = "<group>"; };
 		E1826363247034590012E658 /* MeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewController.swift; sourceTree = "<group>"; };
 		E1D86FDB2467EBD70080BBCE /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				E143CCD024656C2C009AD0FE /* ProfileModel.swift */,
-				E174DB07247AA61C005C236D /* LastSavedDates.swift */,
 				E143CCD224656E00009AD0FE /* CustomDishModel.swift */,
 				E143CCD42465702A009AD0FE /* IngridientsModel.swift */,
 				E143CCD6246594D8009AD0FE /* DataSource.swift */,
@@ -302,7 +299,6 @@
 				E152F22E246438C30003E48C /* SceneDelegate.swift in Sources */,
 				E152F24124643B4C0003E48C /* MainMenuViewController.swift in Sources */,
 				E143CCD52465702A009AD0FE /* IngridientsModel.swift in Sources */,
-				E174DB08247AA61C005C236D /* LastSavedDates.swift in Sources */,
 				E143CCD324656E00009AD0FE /* CustomDishModel.swift in Sources */,
 				E142DEA1246C1073004D0CD1 /* DataMark.swift in Sources */,
 				E1D86FDC2467EBD70080BBCE /* Calendar.swift in Sources */,
