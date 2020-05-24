@@ -14,9 +14,9 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var profileEditLabel: UIBarButtonItem!
     @IBOutlet weak var calendarView: UICollectionView!
     @IBOutlet weak var displayCalendarCurrentMonth: UILabel!
-    @IBOutlet weak var ppmInfoLabel: UILabel!
+    @IBOutlet weak var cpmInfoLabel: UILabel!
     @IBOutlet weak var targetInfoLabel: UILabel!
-    @IBOutlet weak var targetCPMInfoLabel: UILabel!
+    @IBOutlet weak var caloriesForTarget: UILabel!
     @IBOutlet weak var fatsLabel: UILabel!
     @IBOutlet weak var proteinsLabel: UILabel!
     @IBOutlet weak var carbohydratesLabel: UILabel!
@@ -67,9 +67,9 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func reloadVisibleData() {
-        ppmInfoLabel.text = String(format: "%.0f", dataSource.PPM.rounded()) + " Kcal"
+        cpmInfoLabel.text = String(format: "%.0f", dataSource.CPM.rounded()) + " Kcal" 
         targetInfoLabel.text = String("\(dataSource.passedTime) \(NSLocalizedString("Dni", comment: ""))")
-        targetCPMInfoLabel.text = String(format: "%.0f", dataSource.CPM.rounded()) + " Kcal"
+        caloriesForTarget.text = String(format: "%.0f", dataSource.caloriesNeededForTarget.rounded()) + " Kcal"
         fatsLabel.text = String("\(dataSource.macroElements.fats) Kcal")
         proteinsLabel.text = String("\(dataSource.macroElements.proteins) Kcal")
         carbohydratesLabel.text = String("\(dataSource.macroElements.carbohydrates) Kcal")

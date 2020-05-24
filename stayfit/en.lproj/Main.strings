@@ -225,7 +225,7 @@
 "ufP-dY-ezc.text" = "Carbohydrates:";
 
 /* Class = "UILabel"; text = "Dzienne zapotrzebowanie:"; ObjectID = "ve9-8i-t7K"; */
-"ve9-8i-t7K.text" = "Daily requirement:";
+"ve9-8i-t7K.text" = "Daily requirement (CPM):";
 
 /* Class = "UILabel"; text = "Intensywność dniowa"; ObjectID = "vpL-NK-Zaw"; */
 "vpL-NK-Zaw.text" = "Daytime Intensity";

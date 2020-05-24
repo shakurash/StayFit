@@ -780,20 +780,20 @@
                     <connections>
                         <outlet property="calendarView" destination="Jeq-MT-od9" id="zF2-vW-tt3"/>
                         <outlet property="calendarViewHeightCons" destination="Hig-4i-cUK" id="X2B-oT-6hR"/>
+                        <outlet property="caloriesForTarget" destination="rZD-xF-S3M" id="G3S-Nu-isS"/>
                         <outlet property="caloriesLeftLabel" destination="c8w-Uc-ffp" id="h4e-RT-Jyj"/>
                         <outlet property="carbohydratesLabel" destination="FRF-ki-8Vb" id="Lfo-AR-KUn"/>
                         <outlet property="carbohydratesLeftLabel" destination="ufP-dY-ezc" id="0hf-mc-ww5"/>
+                        <outlet property="cpmInfoLabel" destination="2gk-AM-Tg6" id="Laf-gG-A4s"/>
                         <outlet property="cpmLeftLabel" destination="ve9-8i-t7K" id="wJ4-RP-ba4"/>
                         <outlet property="displayCalendarCurrentMonth" destination="pEK-sg-IGg" id="TI8-51-zoq"/>
                         <outlet property="fatsLabel" destination="uCn-hP-vIR" id="Vqk-y3-8M7"/>
                         <outlet property="fatsLeftLabel" destination="l4f-O7-BNP" id="Wr3-Lm-MDI"/>
                         <outlet property="measurementsView" destination="qvA-fB-OQI" id="1FO-V3-g1g"/>
-                        <outlet property="ppmInfoLabel" destination="2gk-AM-Tg6" id="Laf-gG-A4s"/>
                         <outlet property="profileEditLabel" destination="eRh-DG-Ufw" id="OCF-CW-XJP"/>
                         <outlet property="proteinLeftLabel" destination="lgh-n8-RwI" id="bEM-Da-Od4"/>
                         <outlet property="proteinsLabel" destination="yoZ-nM-YwF" id="g16-nh-EEN"/>
                         <outlet property="showMeasureButton" destination="eeb-jP-t2B" id="gKl-Cr-F8J"/>
-                        <outlet property="targetCPMInfoLabel" destination="rZD-xF-S3M" id="G3S-Nu-isS"/>
                         <outlet property="targetInfoLabel" destination="ZBq-j9-ZA7" id="5Fc-CT-NXa"/>
                         <outlet property="targetLeftLabel" destination="lPI-AF-b4s" id="9zS-No-6Wz"/>
                     </connections>

@@ -49,8 +49,8 @@ struct DataSource {
         }
     }
     
-    func massComputedByMeasurement() -> Double { //if user input new mass - calculate CPM with latest measurement by latest stored date
-        guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute measureMass")}
+    func checkForLatestMeasure() -> Int {
+        guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("")}
         let measureMass = loadProfileData.measureArray
         var lastestMass: Int = 0
         if var lastDate = measureMass.first?.date {
@@ -60,15 +60,15 @@ struct DataSource {
                         lastestMass = date.newestMass
                                 }
                         }
-            return staticValueForGender.mass * Double(lastestMass)
+            return lastestMass
         } else {
-        return staticValueForGender.mass * Double(loadProfileData.mass)
+            return loadProfileData.mass
         }
     }
     
     var PPM: Double {
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute PPM")}
-        let mass = massComputedByMeasurement()
+        let mass = staticValueForGender.mass * Double(checkForLatestMeasure()) //if user input new mass - calculate CPM with latest measurement by latest stored date
         let height = staticValueForGender.height * Double(loadProfileData.height)
         let stage = staticValueForGender.stage * Double(age)
         return staticValueForGender.static + mass + height - stage
@@ -79,10 +79,18 @@ struct DataSource {
         return PPM * loadProfileData.dayIntense
     }
     
+    var caloriesNeededForTarget: Double {
+        if predictionTime.daysToTarget <= 0 {
+            return CPM
+        } else {
+        return predictionTime.selectedTempo * CPM
+        }
+    }
+    
     var macroElements: (fats: Int,proteins: Int,carbohydrates: Int) {
-        let fats = Int(CPM * 0.3) //tłuszcze 30
-        let proteins = Int(CPM * 0.15) //bialko 15
-        let carbohydrates = Int(CPM * 0.55) //weglowodany 55
+        let fats = Int(caloriesNeededForTarget * 0.3) //tłuszcze 30
+        let proteins = Int(caloriesNeededForTarget * 0.15) //bialko 15
+        let carbohydrates = Int(caloriesNeededForTarget * 0.55) //weglowodany 55
         return (fats, proteins, carbohydrates)
     }
     
@@ -92,14 +100,19 @@ struct DataSource {
             let currentDay = Date()
             let daysPassedSinceStart = calendar.dateComponents([.day], from: profileDate!, to: currentDay)
             let daysPassed = daysPassedSinceStart.day
-            return predictionTime - daysPassed!
+            let result = predictionTime.daysToTarget - daysPassed!
+        if result > 0 {
+            return result
+        } else {
+            return 0
+        }
     }
     
-    var predictionTime: Int {
+    var predictionTime: (daysToTarget: Int, selectedTempo: Double) {
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute prediction time")}
         let tempo: Double
-        //IF jesli nie ma pomiaru to profil mass jesli jest to z pomiaru
-        let massDifference = loadProfileData.mass - loadProfileData.target
+        let loadedMass = checkForLatestMeasure() //use measure mass if not available then returned value is from profile start date
+        let massDifference = loadedMass - loadProfileData.target
         if massDifference < 0 {
                     switch loadProfileData.tempo {
                     case "slow": tempo = 1.1
@@ -121,17 +134,19 @@ struct DataSource {
         let howMuchProfileNeedsProtein = abs(percentMass * Double(timeToGetTarget) - summarizeMass)
         let realisticTimeToGetTarget = howMuchProfileNeedsProtein / CPM
         let realTimeInt = realisticTimeToGetTarget.rounded(.up)
-        return abs(timeToGetTarget - Int(realTimeInt))
+        return (abs(timeToGetTarget - Int(realTimeInt)), tempo )
     }
     
     func profileTargetDay() -> Array<DataMark> { //for callendar to select specific days from beginning of profile and end of gaining target mass
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile savepoint to make target data")}
         var arrayOfDatesToTargetDay: Array<DataMark> = []
+        var lastSavedDates = Array<LastSavedDates> = []
         let startingProfileDate = loadProfileData.startDate
-        var daysToTarget = predictionTime
+        var daysToTarget = predictionTime.daysToTarget
         var dateComponent = DateComponents()
         let dateFormatter = DateFormatter()
         var dayCounter = 0
+        if daysToTarget > 0 { //if target not meet then populate array with next days/month/years for calendar. If target meet then load historical dates
         while daysToTarget > 0 {
             dateComponent.day = dayCounter
             dayCounter += 1
@@ -140,10 +155,15 @@ struct DataSource {
             let month = dateFormatter.calendar.component(.month, from: analizedDate!)
             let day = dateFormatter.calendar.component(.day, from: analizedDate!)
             let object = DataMark(year: year, month: month, day: day)
-            arrayOfDatesToTargetDay.append(object)
+            let copyObject = lastSavedDates(day: day, month: month, year: year)
+           
+           
             daysToTarget -= 1
         }
         return arrayOfDatesToTargetDay
+        } else {
+            return loadProfileData.lastSavedDates
+        }
     }
     
     //MARK: - calendar setup

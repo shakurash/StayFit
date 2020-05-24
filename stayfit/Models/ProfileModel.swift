@@ -12,6 +12,7 @@ class ProfileModel: Object {
     @objc dynamic var dayIntense: Double = 1.2
     @objc dynamic var lightMode: Bool = true
     @objc dynamic var startDate: Date? = nil
+    let lastSavedDates = List<LastSavedDates>()
     let measureArray = List<MeasurementsData>()
     
     @objc dynamic var przystawka: Bool = true

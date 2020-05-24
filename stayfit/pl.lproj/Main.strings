@@ -225,7 +225,7 @@
 "ufP-dY-ezc.text" = "Węglowodany:";
 
 /* Class = "UILabel"; text = "Dzienne zapotrzebowanie:"; ObjectID = "ve9-8i-t7K"; */
-"ve9-8i-t7K.text" = "Dzienne zapotrzebowanie:";
+"ve9-8i-t7K.text" = "Dzienne zapotrzebowanie (CPM):";
 
 /* Class = "UILabel"; text = "Intensywność dniowa"; ObjectID = "vpL-NK-Zaw"; */
 "vpL-NK-Zaw.text" = "Intensywność dniowa";
