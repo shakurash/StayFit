@@ -11,6 +11,8 @@ struct DataSource {
     let profileMass: [Int] = Array(30...300)
     let profileHeight: [Int] = Array(100...300)
     
+    let notificationMessageBody = [NSLocalizedString("Czas zjeść przystawkę", comment: ""), NSLocalizedString("Czas zjeść śniadanie", comment: ""), NSLocalizedString("Czas zjeść drugie śniadanie", comment: ""), NSLocalizedString("Czas na deser", comment: ""), NSLocalizedString("Czas zjeść obiad", comment: ""), NSLocalizedString("Czas na lunch", comment: ""), NSLocalizedString("Czas zjeść drugi obiad", comment: ""), NSLocalizedString("Pora na przekąske", comment: ""), NSLocalizedString("Czas zjeść kolację", comment: "")]
+    
     // profile PPM, CPM
     var age: Int {
         let ageComponents = calendar.dateComponents([.year], from: convertedDate, to: Date())
@@ -50,23 +52,14 @@ struct DataSource {
     func massComputedByMeasurement() -> Double { //if user input new mass - calculate CPM with latest measurement by latest stored date
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute measureMass")}
         let measureMass = loadProfileData.measureArray
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd/MM/yyyy"
         var lastestMass: Int = 0
-        
         if var lastDate = measureMass.first?.date {
-                //let lastDate = dateFormatter.date(from: firstDate)
-            //if var securedLastDate = lastDate {
                 for date in measureMass {
-                    //let dateToCheck = dateFormatter.date(from: date.date)
-                   // if let securedDateToCheck = dateToCheck {
-                    if lastDate < date.date {
+                    if lastDate <= date.date {
                         lastDate = date.date
                         lastestMass = date.newestMass
                                 }
-                           // }
                         }
-                    //}
             return staticValueForGender.mass * Double(lastestMass)
         } else {
         return staticValueForGender.mass * Double(loadProfileData.mass)
@@ -105,9 +98,10 @@ struct DataSource {
     var predictionTime: Int {
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute prediction time")}
         let tempo: Double
+        //IF jesli nie ma pomiaru to profil mass jesli jest to z pomiaru
         let massDifference = loadProfileData.mass - loadProfileData.target
         if massDifference < 0 {
-        switch loadProfileData.tempo {
+                    switch loadProfileData.tempo {
                     case "slow": tempo = 1.1
                     case "medium": tempo = 1.15
                     case "fast": tempo = 1.2
@@ -121,7 +115,7 @@ struct DataSource {
             default: tempo = 0.9
             }
         }
-        let timeToGetTarget = massDifference * 7
+        let timeToGetTarget = abs(massDifference * 7)
         let summarizeMass = Double(timeToGetTarget) * CPM
         let percentMass = CPM * tempo
         let howMuchProfileNeedsProtein = abs(percentMass * Double(timeToGetTarget) - summarizeMass)

@@ -198,7 +198,7 @@
 "qNw-j5-R9T.text" = "Enter the measured body weight:";
 
 /* Class = "UIButton"; normalTitle = " Drugie Danie"; ObjectID = "qno-hB-I6G"; */
-"qno-hB-I6G.normalTitle" = " Main course";
+"qno-hB-I6G.normalTitle" = " Second dinner";
 
 /* Class = "UIBarButtonItem"; title = "Pomiar"; ObjectID = "rEE-Ix-aCY"; */
 "rEE-Ix-aCY.title" = "Measurement";

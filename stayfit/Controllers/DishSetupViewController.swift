@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class DishSetupViewController: UIViewController {
     
@@ -50,6 +51,7 @@ class DishSetupViewController: UIViewController {
     let updateMethods = UpdateMethods()
     let realm = try! Realm()
     let dataSource = DataSource()
+    let notificationCenter = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +73,20 @@ class DishSetupViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.alarmCheck.isEnabled = false
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (userDidAccept, error) in //start once and ask user for notification
+        if userDidAccept {
+            DispatchQueue.main.async {
+                self.alarmCheck.isEnabled = true
+            }
+        }
+        }
+        
+        checkForNotifications() //starts everytime and check if user changed decision about notifications
+//        notificationCenter.getPendingNotificationRequests { (not: [UNNotificationRequest]) in
+//            print(not)
+//        }
+        
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
             
@@ -190,19 +206,90 @@ class DishSetupViewController: UIViewController {
         default: fatalError("no button was found")
         }
         updateMethods.saveData(dataToSave: index, id: String(button))
+        updateNotifications()
     }
     
     @IBAction func alarmCheck(_ sender: UISwitch) {
-        let status = sender.isOn
-        updateMethods.saveData(dataToSave: status, id: "setAlarm")
+        if sender.isOn {
+            self.updateNotifications()
+            let status = sender.isOn
+            updateMethods.saveData(dataToSave: status, id: "setAlarm")
+        } else {
+            notificationCenter.removeAllPendingNotificationRequests()
+        }
     }
     
     @IBAction func stepperPressed(_ sender: UIStepper) {
-        if let label = timerDisplayLabel {
-            label[sender.tag].text = String(Int(sender.value)) + ":00"
-            if let timeSaved = label[sender.tag].text{
-            updateMethods.saveData(dataToSave: timeSaved, id: "\(sender.tag)")
+         if let label = timerDisplayLabel {
+             label[sender.tag].text = String(Int(sender.value)) + ":00"
+             if let timeSaved = label[sender.tag].text{
+             updateMethods.saveData(dataToSave: timeSaved, id: "\(sender.tag)")
+             }
+         }
+         updateNotifications()
+     }
+    
+    //MARK: - Notification block
+    
+    func checkForNotifications() {
+        notificationCenter.getNotificationSettings { (settings) in
+          if settings.authorizationStatus != .authorized {
+            self.alarmCheck.isEnabled = false
+          } else {
+            self.alarmCheck.isEnabled = true
             }
+        }
+    }
+    
+    func updateNotifications() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.dateFormat = "H:mm"
+        var myDate = Date()
+        if let loadProfileData = realm.objects(ProfileModel.self).first {
+            var checkArray: [Bool] = []
+            var timeArray: [String] = []
+            
+            timeArray.append(loadProfileData.timeOfprzystawka)
+            timeArray.append(loadProfileData.timeOfsniadanie)
+            timeArray.append(loadProfileData.timeOfdrugieSniadanie)
+            timeArray.append(loadProfileData.timeOfdeser)
+            timeArray.append(loadProfileData.timeOfobiad)
+            timeArray.append(loadProfileData.timeOflunch)
+            timeArray.append(loadProfileData.timeOfdrugiObiad)
+            timeArray.append(loadProfileData.timeOfprzekaska)
+            timeArray.append(loadProfileData.timeOfkolacja)
+            
+            checkArray.append(loadProfileData.przystawka)
+            checkArray.append(loadProfileData.sniadanie)
+            checkArray.append(loadProfileData.drugieSniadanie)
+            checkArray.append(loadProfileData.deser)
+            checkArray.append(loadProfileData.obiad)
+            checkArray.append(loadProfileData.lunch)
+            checkArray.append(loadProfileData.drugiObiad)
+            checkArray.append(loadProfileData.przekaska)
+            checkArray.append(loadProfileData.kolacja)
+            var counter = 0
+            for status in checkArray {
+                if status { //check status if true then put time in timeArray to request notifications
+                    myDate = dateFormatter.date(from: timeArray[counter])!
+                    let date = Calendar.current.dateComponents([.hour, .minute, .second], from: myDate)
+                    let message = UNMutableNotificationContent()
+                    message.title = "StayFit"
+                    message.body = "\(dataSource.notificationMessageBody[counter])"
+                    message.sound = .default
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+                    let request = UNNotificationRequest(identifier: "StayFit\(counter)", content: message, trigger: trigger)
+                    notificationCenter.add(request) { (error) in
+                        if error != nil {
+                            print(error!)
+                        }
+                    }
+                }
+                counter += 1
+            }
+            
         }
     }
 }

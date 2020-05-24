@@ -118,8 +118,6 @@ class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPicke
             for date in loadProfileData.measureArray {
                 let dateItemFromProfile = dateFormatter.string(from: date.date)
                 let dateToLook = dateFormatter.string(from: dateToCheck.date)
-                print(dateItemFromProfile)
-                print(dateToLook)
                 if dateItemFromProfile == dateToLook {
                         let alert = UIAlertController(title: NSLocalizedString("Taka data już istnieje!", comment: ""), message: NSLocalizedString("Czy chcesz nadpisać pomiar wagi?", comment: ""), preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: NSLocalizedString("Nie", comment: ""), style: .default, handler: nil))
