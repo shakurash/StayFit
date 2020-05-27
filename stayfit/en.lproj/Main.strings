@@ -33,7 +33,7 @@
 "Aem-be-8cC.text" = "Wed";
 
 /* Class = "UIButton"; normalTitle = " Obiad"; ObjectID = "BAG-yv-tHU"; */
-"BAG-yv-tHU.normalTitle" = " Midday meal";
+"BAG-yv-tHU.normalTitle" = " Dinner";
 
 /* Class = "UITextField"; placeholder = "Podaj swoją wagę w KG"; ObjectID = "Bf2-IA-2Iu"; */
 "Bf2-IA-2Iu.placeholder" = "Enter your weight in KG";
@@ -90,7 +90,7 @@
 "Rgc-sJ-MLK.text" = "The measurement took place on:";
 
 /* Class = "UIButton"; normalTitle = " Kolacja"; ObjectID = "UrJ-bh-f9b"; */
-"UrJ-bh-f9b.normalTitle" = " Dinner";
+"UrJ-bh-f9b.normalTitle" = " Supper";
 
 /* Class = "UISegmentedControl"; Wf8-9i-P1e.segmentTitles[0] = "Powolne"; ObjectID = "Wf8-9i-P1e"; */
 "Wf8-9i-P1e.segmentTitles[0]" = "Slow";
@@ -198,7 +198,7 @@
 "qNw-j5-R9T.text" = "Enter the measured body weight:";
 
 /* Class = "UIButton"; normalTitle = " Drugie Danie"; ObjectID = "qno-hB-I6G"; */
-"qno-hB-I6G.normalTitle" = " Second dinner";
+"qno-hB-I6G.normalTitle" = " Second meal";
 
 /* Class = "UIBarButtonItem"; title = "Pomiar"; ObjectID = "rEE-Ix-aCY"; */
 "rEE-Ix-aCY.title" = "Measurement";

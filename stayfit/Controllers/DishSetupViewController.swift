@@ -34,19 +34,19 @@ class DishSetupViewController: UIViewController {
     @IBOutlet weak var kolacjaStack: UIStackView!
     @IBOutlet weak var bottomStack: UIStackView!
     
+    @IBOutlet weak var przystawkaRightStack: UIStackView!
+    @IBOutlet weak var sniadanieRightStack: UIStackView!
+    @IBOutlet weak var drugieSniadanieRightStack: UIStackView!
+    @IBOutlet weak var deserRightStack: UIStackView!
+    @IBOutlet weak var obiadRightStack: UIStackView!
+    @IBOutlet weak var lunchRightStack: UIStackView!
+    @IBOutlet weak var drugiedanieRightStack: UIStackView!
+    @IBOutlet weak var przekaskaRightStack: UIStackView!
+    @IBOutlet weak var kolacjaRightStack: UIStackView!
+    
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet var timerDisplayLabel: [UILabel]!
     @IBOutlet var stepperValues: [UIStepper]!
-    
-    @IBOutlet weak var przystawkaRightStackCons: NSLayoutConstraint!
-    @IBOutlet weak var sniadanieRightStackCons: NSLayoutConstraint!
-    @IBOutlet weak var drugiesniadanieRightStackCons: NSLayoutConstraint!
-    @IBOutlet weak var deserRightStackCons: NSLayoutConstraint!
-    @IBOutlet weak var obiadRightStackCons: NSLayoutConstraint!
-    @IBOutlet weak var lunchRightStackCons: NSLayoutConstraint!
-    @IBOutlet weak var drugiedanieRightStackCons: NSLayoutConstraint!
-    @IBOutlet weak var przekaskaRightStackCons: NSLayoutConstraint!
-    @IBOutlet weak var kolacjaRightStackCons: NSLayoutConstraint!
     
     let updateMethods = UpdateMethods()
     let realm = try! Realm()
@@ -73,6 +73,7 @@ class DishSetupViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        view.setupbackground(imageViewName: "Background")
         self.alarmCheck.isEnabled = false
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (userDidAccept, error) in //start once and ask user for notification
         if userDidAccept {
@@ -105,15 +106,15 @@ class DishSetupViewController: UIViewController {
             przekaskaStack.isHidden = true
             kolacjaStack.isHidden = true
             
-            przystawkaRightStackCons.constant -= view.bounds.width
-            sniadanieRightStackCons.constant -= view.bounds.width
-            drugiesniadanieRightStackCons.constant -= view.bounds.width
-            deserRightStackCons.constant -= view.bounds.width
-            obiadRightStackCons.constant -= view.bounds.width
-            lunchRightStackCons.constant -= view.bounds.width
-            drugiedanieRightStackCons.constant -= view.bounds.width
-            przekaskaRightStackCons.constant -= view.bounds.width
-            kolacjaRightStackCons.constant -= view.bounds.width
+            przystawkaRightStack.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
+            sniadanieRightStack.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
+            drugieSniadanieRightStack.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
+            deserRightStack.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
+            obiadRightStack.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
+            lunchRightStack.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
+            drugiedanieRightStack.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
+            przekaskaRightStack.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
+            kolacjaRightStack.transform = CGAffineTransform(translationX: view.bounds.width, y: 0)
         }
     }
     
@@ -123,48 +124,48 @@ class DishSetupViewController: UIViewController {
         UIView.animate(withDuration: 0.1){
             self.przystawkaStack.isHidden = false
         }
-        przystawkaRightStackCons.constant = 160
         UIView.animate(withDuration: 0.1, delay: 0.1, options: .curveEaseOut, animations: {
+            self.przystawkaRightStack.transform = CGAffineTransform(translationX: 0, y: 0)
             self.sniadanieStack.isHidden = false
             self.view.layoutIfNeeded()
         })
-        sniadanieRightStackCons.constant = 160
         UIView.animate(withDuration: 0.1, delay: 0.2, options: .curveEaseOut, animations: {
+            self.sniadanieRightStack.transform = CGAffineTransform(translationX: 0, y: 0)
             self.drugiesniadanieStack.isHidden = false
             self.view.layoutIfNeeded()
         })
-        drugiesniadanieRightStackCons.constant = 160
         UIView.animate(withDuration: 0.1, delay: 0.3, options: .curveEaseOut, animations: {
+            self.drugieSniadanieRightStack.transform = CGAffineTransform(translationX: 0, y: 0)
             self.deserStack.isHidden = false
             self.view.layoutIfNeeded()
         })
-        deserRightStackCons.constant = 160
         UIView.animate(withDuration: 0.1, delay: 0.4, options: .curveEaseOut, animations: {
+            self.deserRightStack.transform = CGAffineTransform(translationX: 0, y: 0)
             self.obiadStack.isHidden = false
             self.view.layoutIfNeeded()
         })
-        obiadRightStackCons.constant = 160
         UIView.animate(withDuration: 0.1, delay: 0.5, options: .curveEaseOut, animations: {
+            self.obiadRightStack.transform = CGAffineTransform(translationX: 0, y: 0)
             self.lunchStack.isHidden = false
             self.view.layoutIfNeeded()
         })
-        lunchRightStackCons.constant = 160
         UIView.animate(withDuration: 0.1, delay: 0.6, options: .curveEaseOut, animations: {
+            self.lunchRightStack.transform = CGAffineTransform(translationX: 0, y: 0)
             self.drugiedanieStack.isHidden = false
             self.view.layoutIfNeeded()
         })
-        drugiedanieRightStackCons.constant = 160
         UIView.animate(withDuration: 0.1, delay: 0.7, options: .curveEaseOut, animations: {
+            self.drugiedanieRightStack.transform = CGAffineTransform(translationX: 0, y: 0)
             self.przekaskaStack.isHidden = false
             self.view.layoutIfNeeded()
         })
-        przekaskaRightStackCons.constant = 160
         UIView.animate(withDuration: 0.1, delay: 0.8, options: .curveEaseOut, animations: {
+            self.przekaskaRightStack.transform = CGAffineTransform(translationX: 0, y: 0)
             self.kolacjaStack.isHidden = false
             self.view.layoutIfNeeded()
         })
-        kolacjaRightStackCons.constant = 160
         UIView.animate(withDuration: 0.1, delay: 0.9, options: .curveEaseOut, animations: {
+            self.kolacjaRightStack.transform = CGAffineTransform(translationX: 0, y: 0)
             self.view.layoutIfNeeded()
         })
         UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseOut, animations: {
@@ -233,12 +234,14 @@ class DishSetupViewController: UIViewController {
     
     func checkForNotifications() {
         notificationCenter.getNotificationSettings { (settings) in
-          if settings.authorizationStatus != .authorized {
-            self.alarmCheck.isEnabled = false
-          } else {
-            self.alarmCheck.isEnabled = true
+            DispatchQueue.main.async {
+                if settings.authorizationStatus != .authorized {
+                    self.alarmCheck.isEnabled = false
+                  } else {
+                    self.alarmCheck.isEnabled = true
+                    }
+                }
             }
-        }
     }
     
     func updateNotifications() {

@@ -90,8 +90,6 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func saveProfilePressed(_ sender: UIBarButtonItem) {
         if profileDatePickerTextLabel.text != ""{
-            let profileTimeStart = Date()
-            updateMethods.saveData(dataToSave: profileTimeStart)
             performSegue(withIdentifier: "FromEditProfileToMainMenu", sender: self)
         } else {
             let alert = UIAlertController(title: "Alert", message: NSLocalizedString("Proszę podać datę urodzenia", comment: ""), preferredStyle: .alert)
@@ -104,6 +102,7 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //MARK: - loading values to fetch data from profile
     
     override func viewWillAppear(_ animated: Bool) {
+        view.setupbackground(imageViewName: "Background")
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
             profileNameTextLabel.text = loadProfileData.name
@@ -308,6 +307,8 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             profileTargetTextLabel.text = String(dataSource.profileMass[row]) + " KG"
             id = "profileTarget"
             data = dataSource.profileMass[row]
+            let profileTimeStart = Date() //changing target will reset start day
+            updateMethods.saveData(dataToSave: profileTimeStart)
         } else if profileHeightTextLabel.isFirstResponder {
             profileHeightTextLabel.text = String(dataSource.profileHeight[row]) + " CM"
             id = "profileHeight"

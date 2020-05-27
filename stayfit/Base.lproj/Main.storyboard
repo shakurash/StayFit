@@ -14,18 +14,15 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleAspectFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YuP-OD-ffh">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="YuP-OD-ffh">
+                                <rect key="frame" x="0.0" y="744" width="414" height="30"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="00106-3D-company-logos-design-free-logo-online-2" translatesAutoresizingMaskIntoConstraints="NO" id="nje-dS-JH6">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="742"/>
-                                    </imageView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekl-b8-QXF">
-                                        <rect key="frame" x="0.0" y="744" width="414" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                         <color key="backgroundColor" name="PrimaryColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ckH-JF-Sv6"/>
@@ -47,9 +44,8 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YuP-OD-ffh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="0kw-Pl-82b"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YuP-OD-ffh" secondAttribute="trailing" id="9lp-hu-60x"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YuP-OD-ffh" secondAttribute="bottom" id="SsL-kC-s25"/>
                             <constraint firstItem="YuP-OD-ffh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="n7G-V0-TxV"/>
@@ -66,31 +62,16 @@
             </objects>
             <point key="canvasLocation" x="1184" y="139"/>
         </scene>
-        <!--Ingridients View Controller-->
-        <scene sceneID="rDo-w2-Cvy">
-            <objects>
-                <viewController id="oB2-nl-oqN" customClass="IngridientsViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mnd-GO-gHd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="UTf-H7-Eey"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jFc-Ex-r1d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6915.9420289855079" y="-208.25892857142856"/>
-        </scene>
         <!--Profil-->
         <scene sceneID="cOR-XR-pEx">
             <objects>
                 <viewController id="D4F-Ec-kpx" customClass="BodyEditViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eXN-0h-do8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eY8-PY-gnO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf3-op-VxN">
                                         <rect key="frame" x="0.0" y="10" width="414" height="473.5"/>
@@ -284,7 +265,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="LEh-2l-Ntd" firstAttribute="leading" secondItem="mf3-op-VxN" secondAttribute="leading" constant="10" id="3pR-x6-Uxx"/>
                                             <constraint firstAttribute="bottom" secondItem="LEh-2l-Ntd" secondAttribute="bottom" constant="10" id="MtT-Fv-kd9"/>
@@ -302,7 +283,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eY8-PY-gnO" firstAttribute="top" secondItem="mjb-jV-HIs" secondAttribute="top" id="Ahv-DP-VDg"/>
                             <constraint firstItem="eY8-PY-gnO" firstAttribute="trailing" secondItem="mjb-jV-HIs" secondAttribute="trailing" id="KTD-MR-pxh"/>
@@ -355,12 +336,12 @@
         <scene sceneID="0De-Y8-cTM">
             <objects>
                 <viewController id="X6I-p5-q6r" customClass="MainMenuViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Pbx-7m-9xI">
+                    <view key="view" contentMode="scaleAspectFill" id="Pbx-7m-9xI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYg-F5-Cgb">
-                                <rect key="frame" x="0.0" y="725" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="759" width="414" height="49"/>
                                 <color key="backgroundColor" name="SecondaryColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="M41-Vq-HIx"/>
@@ -383,17 +364,11 @@
                                             <segue destination="8H8-4i-LOK" kind="show" identifier="" id="8mw-nH-Jvs"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Duf-Co-IzF"/>
-                                    <barButtonItem title="Add Dish" image="plus" catalog="system" id="f6G-k0-lbi">
-                                        <connections>
-                                            <segue destination="9BT-nn-dS0" kind="show" id="7R3-BL-iT7"/>
-                                        </connections>
-                                    </barButtonItem>
                                 </items>
                                 <color key="tintColor" name="PrimaryColor"/>
                             </toolbar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1d-CH-hee">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uai-bZ-gZF">
                                         <rect key="frame" x="0.0" y="10" width="414" height="1151"/>
@@ -479,7 +454,7 @@
                                                     </stackView>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jeq-MT-od9">
                                                         <rect key="frame" x="0.0" y="72.5" width="374" height="350"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" name="SecondaryColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="999" constant="350" id="Hig-4i-cUK"/>
                                                         </constraints>
@@ -709,22 +684,22 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="eeb-jP-t2B" firstAttribute="centerX" secondItem="WIc-7d-vAa" secondAttribute="centerX" id="4eX-eZ-XLR"/>
                                                             <constraint firstItem="eeb-jP-t2B" firstAttribute="centerY" secondItem="WIc-7d-vAa" secondAttribute="centerY" id="HnI-uf-zMq"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="30" id="cf1-pd-rXh"/>
                                                         </constraints>
                                                     </view>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qvA-fB-OQI">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" sectionIndexMinimumDisplayRowCount="5" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qvA-fB-OQI">
                                                         <rect key="frame" x="0.0" y="931" width="374" height="220"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="999" constant="220" id="WMK-8X-RBF"/>
                                                         </constraints>
                                                         <color key="separatorColor" name="PrimaryColor"/>
                                                         <color key="sectionIndexColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <color key="sectionIndexBackgroundColor" name="SecondaryColor"/>
+                                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="1nR-w0-kTc">
                                                                 <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
@@ -733,6 +708,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
+                                                                <color key="backgroundColor" name="SecondaryColor"/>
                                                             </tableViewCell>
                                                         </prototypes>
                                                     </tableView>
@@ -742,7 +718,7 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="D3o-ei-sc9" secondAttribute="bottom" id="7jO-Uq-t9U"/>
                                             <constraint firstItem="D3o-ei-sc9" firstAttribute="top" secondItem="uai-bZ-gZF" secondAttribute="top" id="OJe-kh-2yV"/>
@@ -762,6 +738,9 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="HYg-F5-Cgb" firstAttribute="top" secondItem="l1d-CH-hee" secondAttribute="bottom" id="3BH-6f-gDF"/>
                             <constraint firstItem="l1d-CH-hee" firstAttribute="top" secondItem="f8x-ll-gOj" secondAttribute="top" id="8IR-Z6-RUu"/>
@@ -778,24 +757,39 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="cgR-tb-JxJ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="calendarLeftButton" destination="4pq-L4-gZZ" id="T8r-hi-73R"/>
+                        <outlet property="calendarRightButton" destination="7jK-Jy-YAN" id="zyM-Qt-3M7"/>
                         <outlet property="calendarView" destination="Jeq-MT-od9" id="zF2-vW-tt3"/>
                         <outlet property="calendarViewHeightCons" destination="Hig-4i-cUK" id="X2B-oT-6hR"/>
                         <outlet property="caloriesForTarget" destination="rZD-xF-S3M" id="G3S-Nu-isS"/>
                         <outlet property="caloriesLeftLabel" destination="c8w-Uc-ffp" id="h4e-RT-Jyj"/>
+                        <outlet property="carboStack" destination="Js5-8G-aAe" id="mb5-zJ-5mI"/>
                         <outlet property="carbohydratesLabel" destination="FRF-ki-8Vb" id="Lfo-AR-KUn"/>
                         <outlet property="carbohydratesLeftLabel" destination="ufP-dY-ezc" id="0hf-mc-ww5"/>
                         <outlet property="cpmInfoLabel" destination="2gk-AM-Tg6" id="Laf-gG-A4s"/>
                         <outlet property="cpmLeftLabel" destination="ve9-8i-t7K" id="wJ4-RP-ba4"/>
+                        <outlet property="cpmStack" destination="nhR-Yl-vLo" id="vvY-9U-0an"/>
+                        <outlet property="czLabel" destination="yVN-Y7-GZO" id="6r1-Vl-tOm"/>
                         <outlet property="displayCalendarCurrentMonth" destination="pEK-sg-IGg" id="TI8-51-zoq"/>
                         <outlet property="fatsLabel" destination="uCn-hP-vIR" id="Vqk-y3-8M7"/>
                         <outlet property="fatsLeftLabel" destination="l4f-O7-BNP" id="Wr3-Lm-MDI"/>
+                        <outlet property="fatsStack" destination="ueG-jG-O4Y" id="mur-iE-eGs"/>
+                        <outlet property="kcalStack" destination="wR4-8l-p27" id="3Zk-IV-mQ1"/>
                         <outlet property="measurementsView" destination="qvA-fB-OQI" id="1FO-V3-g1g"/>
+                        <outlet property="ndLabel" destination="YkQ-Wf-pe9" id="XBr-Y0-QaJ"/>
+                        <outlet property="pnLabel" destination="hcf-NX-LAp" id="try-oo-we0"/>
                         <outlet property="profileEditLabel" destination="eRh-DG-Ufw" id="OCF-CW-XJP"/>
                         <outlet property="proteinLeftLabel" destination="lgh-n8-RwI" id="bEM-Da-Od4"/>
+                        <outlet property="proteinStack" destination="mmT-Ig-J9n" id="cBm-sG-fH0"/>
                         <outlet property="proteinsLabel" destination="yoZ-nM-YwF" id="g16-nh-EEN"/>
+                        <outlet property="ptLabel" destination="sFy-LN-PJa" id="fI6-tl-TY9"/>
+                        <outlet property="sbLabel" destination="bow-x9-B5r" id="gPP-bs-sQC"/>
                         <outlet property="showMeasureButton" destination="eeb-jP-t2B" id="gKl-Cr-F8J"/>
+                        <outlet property="srLabel" destination="Aem-be-8cC" id="9BI-6E-GgV"/>
                         <outlet property="targetInfoLabel" destination="ZBq-j9-ZA7" id="5Fc-CT-NXa"/>
                         <outlet property="targetLeftLabel" destination="lPI-AF-b4s" id="9zS-No-6Wz"/>
+                        <outlet property="targetStack" destination="4Mc-HF-pka" id="nTd-OM-Kkm"/>
+                        <outlet property="wtLabel" destination="YI6-82-mDy" id="UdB-oV-Jgz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1t-9y-8x8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -806,12 +800,12 @@
         <scene sceneID="5AM-bL-2Vp">
             <objects>
                 <viewController id="8H8-4i-LOK" customClass="MeasurementViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DV4-l9-wav">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <view key="view" contentMode="scaleAspectFill" id="DV4-l9-wav">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FVI-8N-2GD">
-                                <rect key="frame" x="10" y="10" width="394" height="705"/>
+                                <rect key="frame" x="10" y="10" width="394" height="739"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Podaj zmierzoną wagę ciała:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qNw-j5-R9T">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="30"/>
@@ -860,8 +854,8 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mF4-Uw-VT9">
-                                        <rect key="frame" x="0.0" y="330" width="394" height="375"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <rect key="frame" x="0.0" y="330" width="394" height="409"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -902,32 +896,16 @@
             </objects>
             <point key="canvasLocation" x="3784" y="-585"/>
         </scene>
-        <!--Dish Edit View Controller-->
-        <scene sceneID="gWn-SW-sHD">
-            <objects>
-                <viewController id="9BT-nn-dS0" customClass="DishEditViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ds4-Y4-gXg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="9l1-DG-cXK"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="pcw-F9-e3a"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bWi-gY-eaC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4167" y="139"/>
-        </scene>
         <!--Konfiguracja-->
         <scene sceneID="7FQ-qd-Env">
             <objects>
                 <viewController id="zVT-ry-gZs" customClass="DishSetupViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0Oz-pe-cJy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <view key="view" contentMode="scaleAspectFill" id="0Oz-pe-cJy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7k5-6D-s6X">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7wi-Ik-9aU">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="488"/>
@@ -983,7 +961,7 @@
                                                                     </label>
                                                                     <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="przystawka" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="HHD-48-Qqd">
                                                                         <rect key="frame" x="66" y="0.0" width="94" height="32"/>
-                                                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" name="PrimaryColor"/>
                                                                         <connections>
                                                                             <action selector="stepperPressed:" destination="zVT-ry-gZs" eventType="valueChanged" id="cD2-3V-6jb"/>
@@ -1035,7 +1013,7 @@
                                                                     </label>
                                                                     <stepper opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="sniadanie" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="eKG-56-bv8">
                                                                         <rect key="frame" x="66" y="0.0" width="94" height="32"/>
-                                                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" name="PrimaryColor"/>
                                                                         <connections>
                                                                             <action selector="stepperPressed:" destination="zVT-ry-gZs" eventType="valueChanged" id="m2k-Xb-GiP"/>
@@ -1087,7 +1065,7 @@
                                                                     </label>
                                                                     <stepper opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="drugie sniadanie" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="7cC-FG-1lV">
                                                                         <rect key="frame" x="66" y="0.0" width="94" height="32"/>
-                                                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" name="PrimaryColor"/>
                                                                         <connections>
                                                                             <action selector="stepperPressed:" destination="zVT-ry-gZs" eventType="valueChanged" id="lWa-8r-0tZ"/>
@@ -1139,7 +1117,7 @@
                                                                     </label>
                                                                     <stepper opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="deser" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="1h1-6g-ZrX">
                                                                         <rect key="frame" x="66" y="0.0" width="94" height="32"/>
-                                                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" name="PrimaryColor"/>
                                                                         <connections>
                                                                             <action selector="stepperPressed:" destination="zVT-ry-gZs" eventType="valueChanged" id="Dxf-BT-RAu"/>
@@ -1191,7 +1169,7 @@
                                                                     </label>
                                                                     <stepper opaque="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="obiad" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="pfx-Tb-2GR">
                                                                         <rect key="frame" x="66" y="0.0" width="94" height="32"/>
-                                                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" name="PrimaryColor"/>
                                                                         <connections>
                                                                             <action selector="stepperPressed:" destination="zVT-ry-gZs" eventType="valueChanged" id="Ira-cl-Zxh"/>
@@ -1243,7 +1221,7 @@
                                                                     </label>
                                                                     <stepper opaque="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="lunch" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="5rU-C6-SHi">
                                                                         <rect key="frame" x="66" y="0.0" width="94" height="32"/>
-                                                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" name="PrimaryColor"/>
                                                                         <connections>
                                                                             <action selector="stepperPressed:" destination="zVT-ry-gZs" eventType="valueChanged" id="IIc-6V-q9L"/>
@@ -1295,7 +1273,7 @@
                                                                     </label>
                                                                     <stepper opaque="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="drugie danie" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="32E-Om-lMH">
                                                                         <rect key="frame" x="66" y="0.0" width="94" height="32"/>
-                                                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" name="PrimaryColor"/>
                                                                         <connections>
                                                                             <action selector="stepperPressed:" destination="zVT-ry-gZs" eventType="valueChanged" id="Gxy-Cv-3VC"/>
@@ -1347,7 +1325,7 @@
                                                                     </label>
                                                                     <stepper opaque="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="przekaska" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="eJc-oR-4Zv">
                                                                         <rect key="frame" x="66" y="0.0" width="94" height="32"/>
-                                                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" name="PrimaryColor"/>
                                                                         <connections>
                                                                             <action selector="stepperPressed:" destination="zVT-ry-gZs" eventType="valueChanged" id="6ew-sg-no4"/>
@@ -1399,7 +1377,7 @@
                                                                     </label>
                                                                     <stepper opaque="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="kolacja" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="23" translatesAutoresizingMaskIntoConstraints="NO" id="9IA-Qg-ds3">
                                                                         <rect key="frame" x="66" y="0.0" width="94" height="32"/>
-                                                                        <color key="backgroundColor" name="SecondaryColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" name="PrimaryColor"/>
                                                                         <connections>
                                                                             <action selector="stepperPressed:" destination="zVT-ry-gZs" eventType="valueChanged" id="Sbm-La-zH9"/>
@@ -1441,7 +1419,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="1Fc-Kj-cUq" firstAttribute="leading" secondItem="7wi-Ik-9aU" secondAttribute="leading" constant="10" id="2dH-ve-JKm"/>
                                             <constraint firstItem="1Fc-Kj-cUq" firstAttribute="top" secondItem="7wi-Ik-9aU" secondAttribute="top" id="VbD-rU-R1E"/>
@@ -1475,31 +1453,31 @@
                         <outlet property="alarmCheck" destination="4ZJ-gJ-dzo" id="wyP-Kl-5AB"/>
                         <outlet property="bottomStack" destination="NOu-7g-vGx" id="icM-ax-hcE"/>
                         <outlet property="deserCheckBox" destination="4me-sF-rmQ" id="gEr-C3-Mfw"/>
-                        <outlet property="deserRightStackCons" destination="Arl-4g-CtD" id="lJe-Nt-8U4"/>
+                        <outlet property="deserRightStack" destination="GxS-zn-TaH" id="g9g-D9-hzZ"/>
                         <outlet property="deserStack" destination="bDY-FF-WDb" id="5gw-Wa-tg4"/>
                         <outlet property="drugieDanieCheckBox" destination="qno-hB-I6G" id="XHa-Dc-kbf"/>
                         <outlet property="drugieSniadanieCheckBox" destination="ps6-9V-YcG" id="pTQ-iw-Dgq"/>
-                        <outlet property="drugiedanieRightStackCons" destination="61o-XA-1tE" id="hDM-ER-mBf"/>
+                        <outlet property="drugieSniadanieRightStack" destination="ZQI-CG-nLy" id="ujw-tz-0eU"/>
+                        <outlet property="drugiedanieRightStack" destination="UWs-lT-on2" id="vCB-Hn-Y1J"/>
                         <outlet property="drugiedanieStack" destination="Cd9-cH-0Wl" id="Cdb-qb-TcG"/>
-                        <outlet property="drugiesniadanieRightStackCons" destination="nEm-1Z-KSg" id="xEz-D2-fq7"/>
                         <outlet property="drugiesniadanieStack" destination="npe-Nb-yQs" id="tVD-la-g2Z"/>
                         <outlet property="kolacjaCheckBox" destination="UrJ-bh-f9b" id="9Su-lR-AaC"/>
-                        <outlet property="kolacjaRightStackCons" destination="BFU-ky-ggX" id="Q9h-Bn-QJE"/>
+                        <outlet property="kolacjaRightStack" destination="BvD-lm-0c6" id="tGJ-sZ-8ob"/>
                         <outlet property="kolacjaStack" destination="GGm-Uy-XWy" id="LvL-RG-vPh"/>
                         <outlet property="lunchCheckBox" destination="GsL-0G-oce" id="Vt3-7A-Nib"/>
-                        <outlet property="lunchRightStackCons" destination="yts-gb-svk" id="tcP-QK-qUT"/>
+                        <outlet property="lunchRightStack" destination="hj1-6G-gBD" id="gw7-HZ-wDi"/>
                         <outlet property="lunchStack" destination="6o8-QX-g5j" id="XlB-SG-c5M"/>
                         <outlet property="obiadCheckBox" destination="BAG-yv-tHU" id="xIu-2b-q7T"/>
-                        <outlet property="obiadRightStackCons" destination="ofO-02-3AI" id="q3b-Bf-2Ec"/>
+                        <outlet property="obiadRightStack" destination="LlU-Hf-K7I" id="o3c-wu-3M3"/>
                         <outlet property="obiadStack" destination="xRM-3e-2kv" id="38F-yO-g7V"/>
                         <outlet property="przekaskaCheckBox" destination="eU6-bm-XP0" id="xqV-RX-n1h"/>
-                        <outlet property="przekaskaRightStackCons" destination="N7l-n1-iaI" id="AaZ-QM-cSo"/>
+                        <outlet property="przekaskaRightStack" destination="DKw-ac-uW3" id="SlV-25-5Li"/>
                         <outlet property="przekaskaStack" destination="mBc-Yu-hDf" id="CvL-Vn-kOh"/>
                         <outlet property="przystawkaCheckBox" destination="Itz-rf-mn8" id="0ah-MM-6Oi"/>
-                        <outlet property="przystawkaRightStackCons" destination="zT3-bW-BRa" id="YC8-WS-kAl"/>
+                        <outlet property="przystawkaRightStack" destination="1oc-NC-MAn" id="FJu-D1-TGa"/>
                         <outlet property="przystawkaStack" destination="1it-kh-C5i" id="lrh-gw-XwZ"/>
                         <outlet property="sniadanieCheckBox" destination="uGq-Ce-v8l" id="W8i-FX-9kG"/>
-                        <outlet property="sniadanieRightStackCons" destination="Hpr-ec-qHq" id="zZx-0o-IPD"/>
+                        <outlet property="sniadanieRightStack" destination="EKJ-l6-rAe" id="3EQ-xI-sz7"/>
                         <outlet property="sniadanieStack" destination="QdG-Mn-YoG" id="RNM-tK-UGl"/>
                         <outlet property="topLabel" destination="eRd-J5-Rjk" id="Trw-e8-oAX"/>
                         <outletCollection property="timerDisplayLabel" destination="oQ7-zU-VBM" collectionClass="NSMutableArray" id="4Dg-cH-TQj"/>
@@ -1526,21 +1504,6 @@
             </objects>
             <point key="canvasLocation" x="3012" y="933"/>
         </scene>
-        <!--Copy Dish View Controller-->
-        <scene sceneID="eqY-dj-TLi">
-            <objects>
-                <viewController id="fsp-3E-i7m" customClass="CopyDishViewController" customModule="stayfit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Z5S-DM-5sf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="rah-vx-bhU"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zKw-Wk-6ko" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6006" y="562"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="bRs-zm-gRe">
             <objects>
@@ -1566,11 +1529,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jHU-CX-tDF"/>
+        <segue reference="r4o-ID-LhV"/>
         <segue reference="dNq-rj-tXG"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="00106-3D-company-logos-design-free-logo-online-2" width="569.5" height="519.5"/>
         <image name="arrowshape.turn.up.left" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
@@ -1580,12 +1542,11 @@
         <image name="lightbulb.fill" catalog="system" width="113" height="128"/>
         <image name="option" catalog="system" width="128" height="112"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="PrimaryColor">
             <color red="0.49803921568627452" green="0.69803921568627447" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryColor">
-            <color red="0.94099998474121094" green="0.94099998474121094" blue="0.94499999284744263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

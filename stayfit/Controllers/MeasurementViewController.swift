@@ -53,6 +53,7 @@ class MeasurementViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     //MARK: - setup for animation
     override func viewWillAppear(_ animated: Bool) {
+        view.setupbackground(imageViewName: "Background")
          if let loadProfileData = realm.objects(ProfileModel.self).first {
                    loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
         }

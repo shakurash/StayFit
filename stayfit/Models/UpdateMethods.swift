@@ -11,9 +11,7 @@ struct UpdateMethods {
         let myProfile = realm.objects(ProfileModel.self).first
         try! realm.write { // realm.write can catch entire block of code = less code
             if let myData = dataToSave as? Date {
-                if myProfile?.startDate == nil {                    
                     myProfile?.startDate = myData
-                }
             } else if let myData = dataToSave as? String {
                 switch id {
                 case "profileName": myProfile?.name = myData
@@ -29,7 +27,6 @@ struct UpdateMethods {
                 case "6": myProfile?.timeOfdrugiObiad = myData
                 case "7": myProfile?.timeOfprzekaska = myData
                 case "8": myProfile?.timeOfkolacja = myData
-                //case "measureData": stworz array dat z waga
                 default: break
                 }
             } else if let myData = dataToSave as? Int {

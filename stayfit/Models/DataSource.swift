@@ -81,7 +81,7 @@ struct DataSource {
     
     var caloriesNeededForTarget: Double {
         if predictionTime.daysToTarget <= 0 {
-            return CPM
+            return 0
         } else {
         return predictionTime.selectedTempo * CPM
         }
@@ -98,7 +98,7 @@ struct DataSource {
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile data to compute CPM")}
             let profileDate = loadProfileData.startDate
             let currentDay = Date()
-            let daysPassedSinceStart = calendar.dateComponents([.day], from: profileDate!, to: currentDay)
+            let daysPassedSinceStart = calendar.dateComponents([.day], from: profileDate ?? Date(), to: currentDay)
             let daysPassed = daysPassedSinceStart.day
             let result = predictionTime.daysToTarget - daysPassed!
         if result > 0 {
@@ -137,7 +137,7 @@ struct DataSource {
         return (abs(timeToGetTarget - Int(realTimeInt)), tempo )
     }
     
-    func profileTargetDay() -> Array<DataMark> { //for callendar to select specific days from beginning of profile and end of gaining target mass
+    func profileTargetDay() -> Array<DataMark>? { //for callendar to select specific days from beginning of profile and end of gaining target mass
         guard let loadProfileData = realm.objects(ProfileModel.self).first else {fatalError("no profile savepoint to make target data")}
         var arrayOfDatesToTargetDay: Array<DataMark> = []
         let startingProfileDate = loadProfileData.startDate
@@ -145,11 +145,11 @@ struct DataSource {
         var dateComponent = DateComponents()
         let dateFormatter = DateFormatter()
         var dayCounter = 0
-//        if daysToTarget > 0 { //if target not meet then populate array with next days/month/years for calendar. If target meet then load historical dates
+        if daysToTarget > 0 { //if target not meet then populate array with next days/month/years for calendar.
         while daysToTarget > 0 {
             dateComponent.day = dayCounter
             dayCounter += 1
-            let analizedDate = calendar.date(byAdding: dateComponent, to: startingProfileDate!)
+            let analizedDate = calendar.date(byAdding: dateComponent, to: startingProfileDate ?? Date())
             let year = dateFormatter.calendar.component(.year, from: analizedDate!)
             let month = dateFormatter.calendar.component(.month, from: analizedDate!)
             let day = dateFormatter.calendar.component(.day, from: analizedDate!)
@@ -158,9 +158,9 @@ struct DataSource {
             daysToTarget -= 1
         }
         return arrayOfDatesToTargetDay
-//        } else {
-//            return loadProfileData.lastSavedDates
-//        }
+        } else {
+            return nil
+        }
     }
     
     //MARK: - calendar setup
@@ -208,4 +208,23 @@ struct DataSource {
         }
     return steppersArray
 }
+}
+
+//MARK: - background setting up
+extension UIView {
+    func setupbackground(imageViewName: String) {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: imageViewName)
+     
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.center = self.center
+
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.insertSubview(imageView, at: 0) //no idea what code below does but something with autoresizing frame of background when phone is rotated
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[imageView]|", options: [], metrics: nil, views: ["imageView": imageView]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[imageView]|", options: [], metrics: nil, views: ["imageView": imageView]))
+        self.sendSubviewToBack(imageView)
+    }
 }

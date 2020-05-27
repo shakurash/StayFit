@@ -16,6 +16,8 @@
 "Dni" = "Days";
 "Pomiar" = "Measurement";
 "wynosił" = "was";
+"Udało się!" = "You did it!";
+"Usuń" = "Delete";
 
 "Styczeń" = "January";
 "Luty" = "February";
@@ -36,6 +38,6 @@
 "Czas na deser" = "It's dessert time";
 "Czas zjeść obiad" = "Time to have dinner";
 "Czas na lunch" = "Lunch time";
-"Czas zjeść drugi obiad" = "Time to eat the second dinner";
+"Czas zjeść drugi obiad" = "Time to eat the second meal";
 "Pora na przekąske" = "Time for a snack";
-"Czas zjeść kolację" = "Time to have dinner";
+"Czas zjeść kolację" = "Time to have supper";

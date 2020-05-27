@@ -11,9 +11,31 @@ import RealmSwift
 
 class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var profileEditLabel: UIBarButtonItem!
-    @IBOutlet weak var calendarView: UICollectionView!
+    @IBOutlet weak var calendarLeftButton: UIButton!
+    @IBOutlet weak var calendarRightButton: UIButton!
     @IBOutlet weak var displayCalendarCurrentMonth: UILabel!
+    @IBOutlet weak var calendarView: UICollectionView!
+    
+    @IBOutlet weak var pnLabel: UILabel!
+    @IBOutlet weak var wtLabel: UILabel!
+    @IBOutlet weak var srLabel: UILabel!
+    @IBOutlet weak var czLabel: UILabel!
+    @IBOutlet weak var ptLabel: UILabel!
+    @IBOutlet weak var sbLabel: UILabel!
+    @IBOutlet weak var ndLabel: UILabel!
+    
+    @IBOutlet weak var cpmStack: UIStackView!
+    @IBOutlet weak var kcalStack: UIStackView!
+    @IBOutlet weak var fatsStack: UIStackView!
+    @IBOutlet weak var carboStack: UIStackView!
+    @IBOutlet weak var proteinStack: UIStackView!
+    @IBOutlet weak var targetStack: UIStackView!
+    
+    @IBOutlet weak var measurementsView: UITableView!
+    @IBOutlet weak var showMeasureButton: UIButton!
+    
+    @IBOutlet weak var profileEditLabel: UIBarButtonItem!
+
     @IBOutlet weak var cpmInfoLabel: UILabel!
     @IBOutlet weak var targetInfoLabel: UILabel!
     @IBOutlet weak var caloriesForTarget: UILabel!
@@ -30,10 +52,6 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var calendarViewHeightCons: NSLayoutConstraint!
     
-    @IBOutlet weak var measurementsView: UITableView!
-    
-    @IBOutlet weak var showMeasureButton: UIButton!
-    
     let realm = try! Realm()
     var dataSource = DataSource()
     var myArray = Array<DataMark>()
@@ -46,8 +64,9 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         resetCalendar() //need to reset few functions because when used navigation back -> OK but custom segue -> calendar crash
         getStartPosition()
         currentYearIsLeapYear()
-        myArray = dataSource.profileTargetDay()
-        
+        if let arrayIsNotNil = dataSource.profileTargetDay() {
+            myArray = arrayIsNotNil
+        }
         navigationItem.hidesBackButton = true
         calendarView.delegate = self
         calendarView.dataSource = self
@@ -69,10 +88,15 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
     func reloadVisibleData() {
         cpmInfoLabel.text = String(format: "%.0f", dataSource.CPM.rounded()) + " Kcal" 
         targetInfoLabel.text = String("\(dataSource.passedTime) \(NSLocalizedString("Dni", comment: ""))")
-        caloriesForTarget.text = String(format: "%.0f", dataSource.caloriesNeededForTarget.rounded()) + " Kcal"
         fatsLabel.text = String("\(dataSource.macroElements.fats) Kcal")
         proteinsLabel.text = String("\(dataSource.macroElements.proteins) Kcal")
         carbohydratesLabel.text = String("\(dataSource.macroElements.carbohydrates) Kcal")
+        let targetIsAchieved = dataSource.caloriesNeededForTarget.rounded()
+        if targetIsAchieved == 0 {
+            caloriesForTarget.text = NSLocalizedString("Udało się!", comment: "")
+        } else {
+            caloriesForTarget.text = String(format: "%.0f", targetIsAchieved) + " Kcal"
+        }
         measurementsView.reloadData()
     }
     
@@ -87,15 +111,110 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         })
     }
     
-    // MARK: - Table view data source
-    
     override func viewWillAppear(_ animated: Bool) {
+        view.setupbackground(imageViewName: "Background")
+        
         if let loadProfileData = realm.objects(ProfileModel.self).first {
             loadProfileData.lightMode ? (overrideUserInterfaceStyle = .light) : (overrideUserInterfaceStyle = .dark)
         }
         reloadVisibleData() //reload labels if you came from measurement VC and create new measure data to compute
         measurementsView.isHidden = true
         measurementsView.alpha = 0.0
+        
+    //MARK: - animation preparation
+        calendarLeftButton.alpha = 0.0
+        calendarRightButton.alpha = 0.0
+        displayCalendarCurrentMonth.alpha = 0.0
+        pnLabel.alpha = 0.0
+        pnLabel.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        wtLabel.alpha = 0.0
+        wtLabel.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        srLabel.alpha = 0.0
+        srLabel.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        czLabel.alpha = 0.0
+        czLabel.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        ptLabel.alpha = 0.0
+        ptLabel.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        sbLabel.alpha = 0.0
+        sbLabel.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        ndLabel.alpha = 0.0
+        ndLabel.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        calendarView.alpha = 0.0
+        
+        cpmStack.alpha = 0.0
+        kcalStack.alpha = 0.0
+        fatsStack.alpha = 0.0
+        carboStack.alpha = 0.0
+        proteinStack.alpha = 0.0
+        targetStack.alpha = 0.0
+        showMeasureButton.alpha = 0.0
+        showMeasureButton.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+    }
+    
+    //MARK: - run the animation
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.1){
+            self.calendarLeftButton.alpha = 1.0
+               }
+        UIView.animate(withDuration: 0.1, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.displayCalendarCurrentMonth.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.pnLabel.alpha = 1.0
+            self.pnLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 0.1, delay: 0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.calendarRightButton.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.wtLabel.alpha = 1.0
+            self.wtLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.srLabel.alpha = 1.0
+            self.srLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.4, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.czLabel.alpha = 1.0
+            self.czLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 1.0, delay: 0.4, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.calendarView.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.5, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.ptLabel.alpha = 1.0
+            self.ptLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 0.1, delay: 0.5, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.cpmStack.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.6, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.sbLabel.alpha = 1.0
+            self.sbLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 0.1, delay: 0.6, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+                   self.kcalStack.alpha = 1.0
+               })
+        UIView.animate(withDuration: 0.5, delay: 0.7, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.ndLabel.alpha = 1.0
+            self.ndLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
+        UIView.animate(withDuration: 0.1, delay: 0.7, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+                   self.fatsStack.alpha = 1.0
+               })
+        UIView.animate(withDuration: 0.1, delay: 0.8, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+                   self.carboStack.alpha = 1.0
+               })
+        UIView.animate(withDuration: 0.1, delay: 0.9, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+                   self.proteinStack.alpha = 1.0
+               })
+        UIView.animate(withDuration: 0.1, delay: 1.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.targetStack.alpha = 1.0
+        })
+        UIView.animate(withDuration: 0.5, delay: 1.1, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseInOut, animations: {
+            self.showMeasureButton.alpha = 1.0
+            self.showMeasureButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        })
     }
     
     //MARK: - Calendar setup
@@ -139,7 +258,7 @@ class MainMenuViewController: UIViewController, UICollectionViewDataSource, UICo
         
         for item in myArray {
             if year == item.year && month + 1 == item.month && cell.dateLabel.text == String(item.day) {
-                    cell.backgroundColor = UIColor(named: "SecondaryColor")
+                cell.backgroundColor = UIColor(named: "CalendarCells")
             }
         }
     
@@ -291,6 +410,7 @@ extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
             dateFormatter.timeStyle = .none
             dateFormatter.dateStyle = .medium
             cell.textLabel!.text = "\(NSLocalizedString("Pomiar", comment: "")) \(dateFormatter.string(from: sortedMeasures[indexPath.row].date)) \(NSLocalizedString("wynosił", comment: "")) \(sortedMeasures[indexPath.row].newestMass) KG"
+            cell.accessibilityIdentifier = dateFormatter.string(from: sortedMeasures[indexPath.row].date)
             return cell
         } else {
             cell.textLabel!.text = ""
@@ -298,6 +418,40 @@ extension MainMenuViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: NSLocalizedString("Usuń", comment: "")) { (action, view, completionHandler) in
+            let cell = tableView.cellForRow(at: indexPath)
+            let dataToRemove = cell?.accessibilityIdentifier
+            self.containData(data: dataToRemove)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            completionHandler(true)
+        }
+        tableView.reloadData()
+        
+        deleteAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
     
+    func containData(data: String?) {
+        if let securedData = data {
+            if let loadProfileData = realm.objects(ProfileModel.self).first {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd MMM yyyy"
+                let arrayOfDates = loadProfileData.measureArray
+                for date in arrayOfDates {
+                    let stringDate = dateFormatter.string(from: date.date)
+                    if securedData == stringDate {
+                        do {
+                        try realm.write{
+                            realm.delete(date)
+                            }
+                        } catch {
+                                print(error)
+                            }
+                    }
+                }
+            }
+        }
+    }
 }
 

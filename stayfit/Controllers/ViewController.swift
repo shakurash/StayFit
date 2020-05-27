@@ -22,7 +22,9 @@ class ViewController: UIViewController {
     @IBAction func createProfilePressed(_ sender: UIButton) {
         do {
             try realm.write {
-                realm.add(profileModel)
+                if realm.objects(ProfileModel.self).first == nil{
+                    realm.add(profileModel)
+                } 
             }
         } catch {
             print(error)
@@ -31,7 +33,7 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        view.setupbackground(imageViewName: "LogoBackground")
         if (realm.objects(ProfileModel.self).first != nil) {
               let myProfile = realm.objects(ProfileModel.self).first
             if (myProfile?.lightMode) != nil { //check if profile have info about dark mode and set it to navigationBar if not then check for user style preferences

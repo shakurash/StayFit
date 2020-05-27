@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UNUserNotificationCenter.current().delegate = self
         
-        let realm = try! Realm()
-        print(realm.configuration.fileURL)
+        let _ = try! Realm()
+        //print(realm.configuration.fileURL)
         return true
     }
 
