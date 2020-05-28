@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             try realm.write {
                 if realm.objects(ProfileModel.self).first == nil{
                     realm.add(profileModel)
-                } 
+                }
             }
         } catch {
             print(error)

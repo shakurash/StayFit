@@ -27,9 +27,31 @@
 		E152F24124643B4C0003E48C /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F24024643B4C0003E48C /* MainMenuViewController.swift */; };
 		E152F24324643BA30003E48C /* BodyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F24224643BA30003E48C /* BodyEditViewController.swift */; };
 		E152F24724643CAF0003E48C /* DishSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E152F24624643CAF0003E48C /* DishSetupViewController.swift */; };
+		E16E80A5247FD73600EB9D3A /* Pods_stayfit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16E80A2247FD73600EB9D3A /* Pods_stayfit.framework */; };
+		E16E80A6247FD73600EB9D3A /* Pods_stayfit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E16E80A2247FD73600EB9D3A /* Pods_stayfit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E16E80A7247FD73600EB9D3A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16E80A3247FD73600EB9D3A /* Realm.framework */; };
+		E16E80A8247FD73600EB9D3A /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E16E80A3247FD73600EB9D3A /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E16E80A9247FD73600EB9D3A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16E80A4247FD73600EB9D3A /* RealmSwift.framework */; };
+		E16E80AA247FD73600EB9D3A /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E16E80A4247FD73600EB9D3A /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E1826364247034590012E658 /* MeasurementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1826363247034590012E658 /* MeasurementViewController.swift */; };
 		E1D86FDC2467EBD70080BBCE /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D86FDB2467EBD70080BBCE /* Calendar.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E16E80AB247FD73700EB9D3A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E16E80A8247FD73600EB9D3A /* Realm.framework in Embed Frameworks */,
+				E16E80A6247FD73600EB9D3A /* Pods_stayfit.framework in Embed Frameworks */,
+				E16E80AA247FD73600EB9D3A /* RealmSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0D93FC8BC845400976E85859 /* Pods-stayfit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-stayfit.release.xcconfig"; path = "Target Support Files/Pods-stayfit/Pods-stayfit.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +82,9 @@
 		E152F24024643B4C0003E48C /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		E152F24224643BA30003E48C /* BodyEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyEditViewController.swift; sourceTree = "<group>"; };
 		E152F24624643CAF0003E48C /* DishSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishSetupViewController.swift; sourceTree = "<group>"; };
+		E16E80A2247FD73600EB9D3A /* Pods_stayfit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_stayfit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E16E80A3247FD73600EB9D3A /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E16E80A4247FD73600EB9D3A /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1826363247034590012E658 /* MeasurementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementViewController.swift; sourceTree = "<group>"; };
 		E1D86FDB2467EBD70080BBCE /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +94,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16E80A7247FD73600EB9D3A /* Realm.framework in Frameworks */,
 				85F1373F4C252BE6353DCCFC /* Pods_stayfit.framework in Frameworks */,
+				E16E80A9247FD73600EB9D3A /* RealmSwift.framework in Frameworks */,
+				E16E80A5247FD73600EB9D3A /* Pods_stayfit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +107,9 @@
 		5699DA8910E332F13CB21CEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E16E80A2247FD73600EB9D3A /* Pods_stayfit.framework */,
+				E16E80A3247FD73600EB9D3A /* Realm.framework */,
+				E16E80A4247FD73600EB9D3A /* RealmSwift.framework */,
 				7FCD861466318EB9D9E12A68 /* Pods_stayfit.framework */,
 			);
 			name = Frameworks;
@@ -168,6 +199,7 @@
 				E152F225246438C30003E48C /* Frameworks */,
 				E152F226246438C30003E48C /* Resources */,
 				B85FABB5D8309D8CBD7750F4 /* [CP] Embed Pods Frameworks */,
+				E16E80AB247FD73700EB9D3A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
