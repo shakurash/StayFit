@@ -90,6 +90,9 @@ class BodyEditViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func saveProfilePressed(_ sender: UIBarButtonItem) {
         if profileDatePickerTextLabel.text != ""{
+            if realm.objects(ProfileModel.self).first?.startDate == nil {
+                updateMethods.saveData(dataToSave: Date())
+            }
             performSegue(withIdentifier: "FromEditProfileToMainMenu", sender: self)
         } else {
             let alert = UIAlertController(title: "Alert", message: NSLocalizedString("Proszę podać datę urodzenia", comment: ""), preferredStyle: .alert)

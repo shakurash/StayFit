@@ -41,9 +41,6 @@ class ViewController: UIViewController {
             } else {
                 overrideUserInterfaceStyle == .light ? (navigationController?.navigationBar.barTintColor = UIColor(named: "SecondaryColor")):(navigationController?.navigationBar.barTintColor = UIColor(named: "NavigationBarColor"))
             }
-            if myProfile?.date != nil && myProfile?.startDate != nil {
-                performSegue(withIdentifier: "FromStartToMainMenu", sender: self)
-            }
         }
     }
 }
